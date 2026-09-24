@@ -1,0 +1,352 @@
+[
+  {
+    "src": "/img/ductos/ductos-01.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "src": "/img/ductos/ductos-02.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "src": "/img/ductos/ductos-03.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-04.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-05.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-06.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-07.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-08.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "src": "/img/ductos/ductos-09.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-10.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-11.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-12.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ductos/ductos-13.webp",
+    "category": "ductos",
+    "project": null,
+    "width": 913,
+    "height": 1280
+  },
+  {
+    "src": "/img/izaje/izaje-01.webp",
+    "category": "izaje",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/izaje/izaje-02.webp",
+    "category": "izaje",
+    "project": null,
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "src": "/img/izaje/izaje-03.webp",
+    "category": "izaje",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/izaje/izaje-04.webp",
+    "category": "izaje",
+    "project": null,
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "src": "/img/izaje/izaje-05.webp",
+    "category": "izaje",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/izaje/izaje-06.webp",
+    "category": "izaje",
+    "project": null,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/ava-01.webp",
+    "category": "ajuste",
+    "project": "AVA",
+    "width": 1536,
+    "height": 1536
+  },
+  {
+    "src": "/img/ajuste/bomba-b8-ypf-poliducto-02.webp",
+    "category": "ajuste",
+    "project": "BOMBA B8 YPF POLIDUCTO",
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/bomba-b8-ypf-poliducto-03.webp",
+    "category": "ajuste",
+    "project": "BOMBA B8 YPF POLIDUCTO",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/bomba-b8-ypf-poliducto-04.webp",
+    "category": "ajuste",
+    "project": "BOMBA B8 YPF POLIDUCTO",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "src": "/img/ajuste/bomba-b8-ypf-poliducto-05.webp",
+    "category": "ajuste",
+    "project": "BOMBA B8 YPF POLIDUCTO",
+    "width": 1280,
+    "height": 575
+  },
+  {
+    "src": "/img/ajuste/bomba-b8-ypf-poliducto-06.webp",
+    "category": "ajuste",
+    "project": "BOMBA B8 YPF POLIDUCTO",
+    "width": 1280,
+    "height": 575
+  },
+  {
+    "src": "/img/ajuste/bomba-b8-ypf-poliducto-07.webp",
+    "category": "ajuste",
+    "project": "BOMBA B8 YPF POLIDUCTO",
+    "width": 1280,
+    "height": 575
+  },
+  {
+    "src": "/img/ajuste/compresor-air-liquid-08.webp",
+    "category": "ajuste",
+    "project": "COMPRESOR AIR LIQUID",
+    "width": 1280,
+    "height": 575
+  },
+  {
+    "src": "/img/ajuste/motor-cooper-superior-yac-malargue-09.webp",
+    "category": "ajuste",
+    "project": "MOTOR COOPER SUPERIOR (YAC. MALARGUE)",
+    "width": 1600,
+    "height": 702
+  },
+  {
+    "src": "/img/ajuste/motor-cooper-superior-yac-malargue-10.webp",
+    "category": "ajuste",
+    "project": "MOTOR COOPER SUPERIOR (YAC. MALARGUE)",
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "src": "/img/ajuste/motor-cooper-superior-yac-malargue-11.webp",
+    "category": "ajuste",
+    "project": "MOTOR COOPER SUPERIOR (YAC. MALARGUE)",
+    "width": 576,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/motor-cooper-superior-yac-malargue-12.webp",
+    "category": "ajuste",
+    "project": "MOTOR COOPER SUPERIOR (YAC. MALARGUE)",
+    "width": 561,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/motor-cooper-superior-yac-malargue-13.webp",
+    "category": "ajuste",
+    "project": "MOTOR COOPER SUPERIOR (YAC. MALARGUE)",
+    "width": 561,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/motor-cooper-superior-yac-malargue-14.webp",
+    "category": "ajuste",
+    "project": "MOTOR COOPER SUPERIOR (YAC. MALARGUE)",
+    "width": 959,
+    "height": 1280
+  },
+  {
+    "src": "/img/ajuste/servicios-15.webp",
+    "category": "ajuste",
+    "project": "SERVICIOS",
+    "width": 900,
+    "height": 1600
+  },
+  {
+    "src": "/img/repuestos/repuestos-01.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 3413
+  },
+  {
+    "src": "/img/repuestos/repuestos-02.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/repuestos/repuestos-03.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 3413
+  },
+  {
+    "src": "/img/repuestos/repuestos-04.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 3413
+  },
+  {
+    "src": "/img/repuestos/repuestos-05.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 3413
+  },
+  {
+    "src": "/img/repuestos/repuestos-06.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/repuestos/repuestos-07.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 3413
+  },
+  {
+    "src": "/img/repuestos/repuestos-08.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/repuestos/repuestos-09.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/repuestos/repuestos-10.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/repuestos/repuestos-11.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/repuestos/repuestos-12.webp",
+    "category": "repuestos",
+    "project": null,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "src": "/img/oficina-tecnica/oficina-tecnica-01.webp",
+    "category": "oficina-tecnica",
+    "project": null,
+    "width": 679,
+    "height": 532
+  },
+  {
+    "src": "/img/oficina-tecnica/oficina-tecnica-02.webp",
+    "category": "oficina-tecnica",
+    "project": null,
+    "width": 526,
+    "height": 594
+  },
+  {
+    "src": "/img/oficina-tecnica/oficina-tecnica-03.webp",
+    "category": "oficina-tecnica",
+    "project": null,
+    "width": 778,
+    "height": 611
+  },
+  {
+    "src": "/img/oficina-tecnica/oficina-tecnica-04.webp",
+    "category": "oficina-tecnica",
+    "project": null,
+    "width": 589,
+    "height": 499
+  }
+]
