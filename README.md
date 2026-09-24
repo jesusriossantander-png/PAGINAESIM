@@ -31,7 +31,7 @@ Las fotos originales están en `ESIM. COMPARTIDO/` y `TERCEROS (CLIENTES VARIOS)
 
 | Qué | Archivo |
 | --- | --- |
-| Teléfono, email, dirección, WhatsApp, gerente, cifras, clientes, testimonios | `src/data/site.ts` |
+| Teléfono, email, dirección, WhatsApp, gerente, cifras, clientes | `src/data/site.ts` |
 | Asistente virtual "Andrea" (respuestas y pasos) | `src/components/Asistente.tsx` |
 | Servicios (textos, viñetas, foto) | `src/data/servicios.ts` |
 | Categorías de obras, títulos de proyectos, fotos destacadas | `src/data/obras.ts` |

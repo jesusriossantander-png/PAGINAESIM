@@ -6,7 +6,6 @@ import ProjectsCarousel, { type Proyecto } from "@/components/ProjectsCarousel";
 import Reveal from "@/components/Reveal";
 import ServicesExplorer from "@/components/ServicesExplorer";
 import StatCounter from "@/components/StatCounter";
-import Testimonials from "@/components/Testimonials";
 import { clients, indicadores, stats } from "@/data/site";
 
 const proceso = [
@@ -206,29 +205,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CLIENTES + TESTIMONIOS */}
-      <section className="py-24 md:py-36">
+      {/* CLIENTES */}
+      <section className="py-24 md:py-32">
         <div className="container-x">
-          <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-8 border-b border-line pb-14">
-            <p className="eyebrow text-muted">Confían en nosotros</p>
-            <div className="flex flex-wrap items-center gap-x-14 gap-y-6">
-              {clients.map((c) =>
-                c.logo ? (
+          <Reveal className="text-center">
+            <p className="eyebrow text-brand-500">Clientes</p>
+            <h2 className="mx-auto mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold md:text-5xl">
+              Empresas que <em>confían en nosotros.</em>
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-[28px] bg-line md:grid-cols-4">
+            {clients.map((c, i) => (
+              <Reveal key={c.name} delay={i * 80} className="flex h-40 flex-col items-center justify-center gap-3 bg-paper px-6 md:h-48">
+                {c.logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img key={c.name} src={c.logo} alt={c.name} className="h-8 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0" />
+                  <img src={c.logo} alt={c.name} className="h-10 w-auto max-w-[160px] md:h-12" />
                 ) : (
-                  <span key={c.name} className="font-display text-xl font-semibold text-ink/50">
-                    {c.name}
-                  </span>
-                ),
-              )}
-            </div>
-          </div>
-          <div className="mt-20">
-            <Reveal>
-              <p className="eyebrow mb-12 text-brand-500">Lo que dicen nuestros clientes</p>
-            </Reveal>
-            <Testimonials />
+                  <span className="text-center font-display text-2xl font-semibold text-ink">{c.name}</span>
+                )}
+                <span className="text-xs font-semibold tracking-wider text-muted uppercase">{c.detail}</span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

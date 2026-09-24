@@ -39,32 +39,8 @@ export const indicadores = [
 ];
 
 export const clients = [
-  { name: "YPF", logo: "/clients/ypf.svg" },
-  { name: "Air Liquide", logo: "/clients/airliquide.svg" },
-  { name: "YPF Poliducto", logo: null },
-  { name: "Yac. Malargüe", logo: null },
-];
-
-// CONFIRMAR: testimonios del diseño original; validar que sean reales antes de publicar.
-export const testimonios = [
-  {
-    texto:
-      "Respondieron a una parada de planta en tiempo récord y dejaron el equipo operativo. Cumplieron en seguridad y plazos.",
-    iniciales: "JM",
-    cargo: "Jefe de Mantenimiento",
-    empresa: "Operadora de Oil & Gas",
-  },
-  {
-    texto: "Fabricaron un repuesto que ya no se conseguía a partir de un modelo 3D. Excelente nivel técnico y trato.",
-    iniciales: "SC",
-    cargo: "Supervisor de Compras",
-    empresa: "Planta industrial",
-  },
-  {
-    texto:
-      "El servicio de hidrogrúa y logística fue clave para mover equipos pesados sin contratiempos. Muy recomendables.",
-    iniciales: "RL",
-    cargo: "Responsable de Logística",
-    empresa: "Yacimiento Malargüe",
-  },
+  { name: "YPF", logo: "/clients/ypf.png", detail: "Oil & Gas" },
+  { name: "Air Liquide", logo: "/clients/airliquide.svg", detail: "Gases industriales" },
+  { name: "YPF Poliducto", logo: "/clients/ypf.png", detail: "Transporte de combustibles" },
+  { name: "Yacimiento Malargüe", logo: null, detail: "Upstream · Mendoza" },
 ];

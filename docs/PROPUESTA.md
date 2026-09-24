@@ -5,7 +5,7 @@
 - ESIM tiene más de 30 años de trayectoria (desde 1993), más de 200 personas y clientes como YPF y Air Liquide. También cuenta con un archivo de fotos muy bueno (ductos, izaje, taller, repuestos y modelos 3D), pero hoy no lo aprovecha.
 
 ## Diseño original (F:\pages)
-Ya existía una versión de una sola página, hecha en Claude Design, que se sirve con `Panel ESIM.bat` (Python `http.server`, puerto 50300). Tiene el logo oficial, la paleta verde `#2F7D63`, los datos reales de contacto, cifras, testimonios y el asistente "Andrea", que toma los datos de la persona y los envía por WhatsApp al gerente. La web nueva **mantiene ese diseño y ese contenido** y los reparte en varias páginas. El original quedó guardado en `diseno-original/`.
+Ya existía una versión de una sola página, hecha en Claude Design, que se sirve con `Panel ESIM.bat` (Python `http.server`, puerto 50300). Tiene el logo oficial, la paleta verde `#2F7D63`, los datos reales de contacto, cifras y el asistente "Andrea", que toma los datos de la persona y los envía por WhatsApp al gerente. La web nueva **mantiene ese diseño y ese contenido** y los reparte en varias páginas. El original quedó guardado en `diseno-original/`.
 
 ## Referencia: tangoenergia.com
 Web institucional de una petrolera, con:
