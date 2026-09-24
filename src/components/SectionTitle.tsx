@@ -1,3 +1,4 @@
+// El título admite <em> para la palabra destacada en verde itálica, como en el diseño original.
 export default function SectionTitle({
   eyebrow,
   title,
@@ -5,17 +6,23 @@ export default function SectionTitle({
   light = false,
   center = false,
 }: {
-  eyebrow: string;
-  title: string;
+  eyebrow?: string;
+  title: React.ReactNode;
   intro?: string;
   light?: boolean;
   center?: boolean;
 }) {
   return (
     <div className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
-      <p className="text-sm font-bold tracking-[0.2em] text-brand-500 uppercase">{eyebrow}</p>
-      <h2 className={`mt-3 text-3xl font-extrabold md:text-4xl ${light ? "text-white" : "text-ink-900"}`}>{title}</h2>
-      {intro && <p className={`mt-4 text-lg leading-relaxed ${light ? "text-white/75" : "text-steel-500"}`}>{intro}</p>}
+      {eyebrow && <p className="text-xs font-bold tracking-[0.2em] text-brand-500 uppercase">{eyebrow}</p>}
+      <h2
+        className={`mt-3 text-3xl font-bold md:text-[42px] md:leading-tight ${
+          light ? "text-white [&_em]:text-accent-400" : "text-ink-800"
+        }`}
+      >
+        {title}
+      </h2>
+      {intro && <p className={`mt-4 text-lg leading-relaxed ${light ? "text-white/70" : "text-steel-500"}`}>{intro}</p>}
     </div>
   );
 }

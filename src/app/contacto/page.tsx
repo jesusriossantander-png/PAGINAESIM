@@ -17,10 +17,14 @@ export default function ContactoPage() {
       <section className="py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-6">
-            <InfoCard title="Dirección">
+            <InfoCard title="Ubicación">
               {site.address}
               <br />
               {site.city}
+              <br />
+              <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-base font-semibold text-brand-500">
+                Ver en Google Maps →
+              </a>
             </InfoCard>
             <InfoCard title="Teléfono">
               <a href={site.phoneHref} className="hover:text-brand-600">
@@ -34,10 +38,10 @@ export default function ContactoPage() {
             </InfoCard>
             {site.whatsapp && (
               <a
-                href={`https://wa.me/${site.whatsapp}`}
+                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hola, quiero hacer una consulta a ESIM SRL.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex rounded-full bg-[#25D366] px-6 py-3 font-semibold text-white"
+                className="inline-flex rounded-lg bg-[#25D366] px-6 py-3 font-semibold text-white"
               >
                 Escribinos por WhatsApp
               </a>

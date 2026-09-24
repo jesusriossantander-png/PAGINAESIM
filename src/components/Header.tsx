@@ -10,11 +10,9 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  // En la Home el header arranca transparente sobre el hero
-  const overHero = pathname === "/" && !scrolled && !open;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -24,13 +22,13 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        overHero ? "bg-transparent" : "bg-ink-900/95 shadow-lg backdrop-blur"
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-white/95 backdrop-blur transition-shadow ${
+        scrolled ? "border-steel-100 shadow-md" : "border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" aria-label="ESIM – Inicio">
-          <Logo light />
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Principal">
@@ -40,8 +38,8 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded px-3 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-safety-400" : "text-white/85 hover:text-white"
+                className={`rounded px-3 py-2 text-[15px] font-semibold transition-colors ${
+                  active ? "text-brand-500" : "text-ink-700 hover:text-brand-500"
                 }`}
               >
                 {item.label}
@@ -50,16 +48,22 @@ export default function Header() {
           })}
           <Link
             href="/acceso"
-            className="ml-3 inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-400 hover:bg-brand-500"
+            className="ml-2 inline-flex items-center gap-2 rounded-lg border border-steel-100 px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-500 hover:text-brand-500"
           >
             <LockIcon />
-            Acceso socios
+            Socios
+          </Link>
+          <Link
+            href="/contacto"
+            className="ml-2 rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-brand-500/25 transition hover:bg-brand-600"
+          >
+            Solicitar cotización
           </Link>
         </nav>
 
         <button
           type="button"
-          className="rounded p-2 text-white lg:hidden"
+          className="rounded p-2 text-ink-800 lg:hidden"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -71,19 +75,21 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 bg-ink-900 px-4 pb-6 lg:hidden" aria-label="Móvil">
+        <nav className="border-t border-steel-100 bg-white px-4 pb-6 lg:hidden" aria-label="Móvil">
           {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block border-b border-white/10 py-4 text-base font-medium text-white"
-            >
+            <Link key={item.href} href={item.href} className="block border-b border-steel-100 py-4 font-semibold text-ink-800">
               {item.label}
             </Link>
           ))}
           <Link
+            href="/contacto"
+            className="mt-5 flex items-center justify-center rounded-lg bg-brand-500 py-3 font-bold text-white"
+          >
+            Solicitar cotización
+          </Link>
+          <Link
             href="/acceso"
-            className="mt-5 flex items-center justify-center gap-2 rounded-full bg-brand-500 py-3 font-semibold text-white"
+            className="mt-3 flex items-center justify-center gap-2 rounded-lg border border-steel-100 py-3 font-semibold text-ink-700"
           >
             <LockIcon />
             Acceso socios / empleados

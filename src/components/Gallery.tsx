@@ -49,7 +49,7 @@ export default function Gallery() {
                 active ? "bg-ink-900 text-white" : "bg-steel-100 text-ink-800 hover:bg-steel-50 hover:ring-1 hover:ring-ink-700"
               }`}
             >
-              {c.label} <span className={active ? "text-safety-400" : "text-steel-500"}>{count}</span>
+              {c.label} <span className={active ? "text-accent-400" : "text-steel-500"}>{count}</span>
             </button>
           );
         })}

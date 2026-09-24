@@ -1,21 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
 
-  /* Paleta industrial: azul petróleo + verde de la marca ESIM + amarillo seguridad */
-  --color-ink-950: #07111c;
-  --color-ink-900: #0b1b2b;
-  --color-ink-800: #12283d;
-  --color-ink-700: #1c3a55;
-  --color-brand-500: #1f9d4c;
-  --color-brand-400: #34b862;
-  --color-brand-600: #16803c;
-  --color-safety-400: #f5b800;
-  --color-steel-50: #f4f6f8;
-  --color-steel-100: #e7ebef;
-  --color-steel-500: #64748b;
+  /* Paleta del diseño original de ESIM (diseno-original/index.html) */
+  --color-ink-950: #0f1814;
+  --color-ink-900: #15211c;
+  --color-ink-800: #18231f;
+  --color-ink-700: #2a3a33;
+  --color-brand-600: #25634f;
+  --color-brand-500: #2f7d63;
+  --color-brand-400: #3fae63;
+  --color-brand-50: #e8f2ed;
+  --color-accent-400: #7fd1a3;
+  --color-steel-50: #f4f6f5;
+  --color-steel-100: #e6eae7;
+  --color-steel-500: #7e867f;
 }
 
 html {
@@ -24,7 +25,7 @@ html {
 
 body {
   background: #ffffff;
-  color: var(--color-ink-900);
+  color: var(--color-ink-800);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -34,6 +35,14 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Palabra destacada en títulos: "Servicios <em>que ofrecemos</em>" */
+h1 em,
+h2 em {
+  font-style: italic;
+  color: var(--color-brand-500);
 }
 
 /* Animación de aparición al hacer scroll (ver components/Reveal.tsx) */

@@ -41,10 +41,10 @@ export default function ServiciosPage() {
                   ))}
                 </ul>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <Link href="/contacto" className="rounded-full bg-ink-900 px-6 py-3 font-semibold text-white hover:bg-ink-700">
+                  <Link href="/contacto" className="rounded-lg bg-ink-900 px-6 py-3 font-semibold text-white hover:bg-ink-700">
                     Consultar
                   </Link>
-                  <Link href="/obras" className="rounded-full px-6 py-3 font-semibold text-brand-600 hover:bg-steel-50">
+                  <Link href="/obras" className="rounded-lg px-6 py-3 font-semibold text-brand-600 hover:bg-steel-50">
                     Ver obras →
                   </Link>
                 </div>

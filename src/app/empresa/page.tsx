@@ -64,7 +64,7 @@ export default function EmpresaPage() {
             </p>
           </Reveal>
           <Reveal delay={100} className="rounded-2xl bg-ink-900 p-10 text-white shadow-sm">
-            <p className="text-sm font-bold tracking-[0.2em] text-safety-400 uppercase">Visión</p>
+            <p className="text-sm font-bold tracking-[0.2em] text-accent-400 uppercase">Visión</p>
             <p className="mt-4 text-xl leading-relaxed">
               Ser la empresa de referencia en servicios de mantenimiento y fabricación para la industria energética
               de la región de Cuyo y el país.

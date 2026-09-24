@@ -11,8 +11,8 @@ export type Servicio = {
 export const servicios: Servicio[] = [
   {
     slug: "ajuste",
-    title: "Ajuste y reparación de máquinas",
-    short: "Mantenimiento y overhaul de equipos rotantes y alternativos.",
+    title: "Ajuste y reparación de equipos",
+    short: "Bombas, compresores y motores. Desarme, mecanizado, ajuste y montaje con tolerancias de precisión.",
     description:
       "Reparamos y mantenemos bombas, compresores, motores y turbomáquinas de distintas potencias, en taller o en campo, minimizando los tiempos de parada de planta.",
     bullets: [
@@ -39,8 +39,8 @@ export const servicios: Servicio[] = [
   },
   {
     slug: "oficina-tecnica",
-    title: "Oficina técnica",
-    short: "Diseño 3D, planos y desarrollo de soluciones a medida.",
+    title: "Oficina técnica · 3D",
+    short: "Relevamiento, modelado 3D y fabricación de repuestos a medida cuando no hay original disponible.",
     description:
       "Nuestro equipo de ingeniería modela en 3D, calcula y documenta cada pieza y dispositivo antes de fabricarlo, asegurando precisión y repetibilidad.",
     bullets: [
@@ -54,7 +54,7 @@ export const servicios: Servicio[] = [
   {
     slug: "ductos",
     title: "Acondicionamiento de ductos",
-    short: "Soldadura, montaje y reparación de cañerías en campo.",
+    short: "Excavación, soldadura, revestimiento y puesta en servicio de cañerías y poliductos en obra.",
     description:
       "Ejecutamos tendido, soldadura y acondicionamiento de ductos con personal calificado y equipamiento propio, cumpliendo estrictos estándares de seguridad.",
     bullets: [
@@ -67,8 +67,8 @@ export const servicios: Servicio[] = [
   },
   {
     slug: "izaje",
-    title: "Logística e izaje",
-    short: "Camiones con hidrogrúa, grúas y transporte de equipos pesados.",
+    title: "Logística con hidrogrúa",
+    short: "Transporte, izaje y movimiento de equipos pesados con camiones hidrogrúa y personal habilitado.",
     description:
       "Contamos con flota propia de camiones con hidrogrúa y semirremolques para el movimiento, montaje y traslado de equipos industriales.",
     bullets: [

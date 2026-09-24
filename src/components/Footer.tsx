@@ -5,18 +5,20 @@ import { servicios } from "@/data/servicios";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink-950 text-white/70">
+    <footer className="bg-ink-900 text-white/70">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo light />
+          <span className="inline-block rounded-xl bg-white px-3 py-2">
+            <Logo className="h-9 w-auto" />
+          </span>
           <p className="mt-4 text-sm leading-relaxed">
-            {site.legalName}. Desde {site.foundedYear} al servicio de la industria energética.
+            {site.legalName}. Servicios industriales para Oil &amp; Gas: ductos, equipos rotativos, hidrogrúa y oficina técnica. Cuyo y Patagonia.
           </p>
         </div>
         <div>
           <h3 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">Navegación</h3>
           <ul className="space-y-2 text-sm">
-            {nav.map((n) => (
+            {[...nav, { href: "/trabaja-con-nosotros", label: "Trabajá con nosotros" }].map((n) => (
               <li key={n.href}>
                 <Link href={n.href} className="hover:text-white">
                   {n.label}
@@ -56,6 +58,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                Ver en Google Maps
+              </a>
+            </li>
+            <li>
               <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 LinkedIn
               </a>
@@ -68,6 +75,7 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
           </p>
+          <span className="text-white/50">Seguridad · Calidad · Compromiso</span>
           <Link href="/acceso" className="hover:text-white">
             Acceso socios / empleados
           </Link>

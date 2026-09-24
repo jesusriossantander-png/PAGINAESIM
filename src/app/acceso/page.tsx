@@ -16,7 +16,7 @@ export default function AccesoPage() {
       <Image src="/img/izaje/izaje-03.webp" alt="" fill priority sizes="100vw" className="object-cover opacity-30" />
       <div className="relative mx-auto grid w-full max-w-5xl items-center gap-10 lg:grid-cols-2">
         <div className="text-white">
-          <p className="text-sm font-bold tracking-[0.2em] text-safety-400 uppercase">Área privada</p>
+          <p className="text-sm font-bold tracking-[0.2em] text-accent-400 uppercase">Área privada</p>
           <h1 className="mt-3 text-4xl font-extrabold md:text-5xl">Portal ESIM</h1>
           <p className="mt-4 text-lg text-white/75">
             Un espacio exclusivo para el equipo y los socios de ESIM. Estamos terminando de construirlo.
@@ -32,7 +32,7 @@ export default function AccesoPage() {
         </div>
         <div className="rounded-2xl bg-white p-8 shadow-2xl">
           <h2 className="text-2xl font-extrabold">Iniciar sesión</h2>
-          <span className="mt-2 inline-block rounded-full bg-safety-400/20 px-3 py-1 text-xs font-bold text-ink-900">
+          <span className="mt-2 inline-block rounded-full bg-accent-400/20 px-3 py-1 text-xs font-bold text-ink-900">
             Próximamente
           </span>
           <form className="mt-6 grid gap-4">
@@ -44,7 +44,7 @@ export default function AccesoPage() {
               Contraseña
               <input type="password" disabled className="rounded-lg border border-steel-100 bg-steel-50 px-4 py-3" />
             </label>
-            <button disabled className="mt-2 cursor-not-allowed rounded-full bg-steel-100 py-3 font-semibold text-steel-500">
+            <button disabled className="mt-2 cursor-not-allowed rounded-lg bg-steel-100 py-3 font-semibold text-steel-500">
               Ingresar
             </button>
           </form>

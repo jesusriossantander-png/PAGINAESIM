@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F6F5;
+    --surface: #FFFFFF;
+    --ink: #18231F;
+    --ink-2: #4C564F;
+    --ink-dim: #7E867F;
+    --primary: #2F7D63;
+    --primary-d: #25634F;
+    --primary-soft: rgba(47,125,99,0.10);
+    --line: #E6EAE7;
+    --dark: #15211C;
+    --dark-2: #1C2A24;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Manrope', system-ui, sans-serif; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(760px 520px at 100% -8%, rgba(47,125,99,0.06), transparent 60%),
+      radial-gradient(680px 560px at -5% 40%, rgba(47,125,99,0.05), transparent 60%);
+  }
+  x-dc, x-dc > div { position: relative; z-index: 1; }
+  ::selection { background: rgba(47,125,99,0.22); color: #15211C; }
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: #E9EDEB; }
+  ::-webkit-scrollbar-thumb { background: #C3CCC7; border-radius: 10px; border: 3px solid #E9EDEB; }
+  ::-webkit-scrollbar-thumb:hover { background: #AAB5AF; }
+  .esim-card:hover .esim-card-img { transform: scale(1.05); }
+  .esim-work:hover .esim-work-img { transform: scale(1.06); }
+  .esim-work:hover .esim-work-ov { opacity: 1; }
+  @keyframes esimMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (max-width: 980px) {
+    .esim-cards { grid-template-columns: 1fr 1fr !important; }
+    .esim-why { grid-template-columns: 1fr !important; gap: 44px !important; }
+    .esim-works { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 860px) {
+    .esim-menu { display: none !important; }
+    .esim-nav { padding-top: 11px !important; padding-bottom: 11px !important; }
+    .esim-2col { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .esim-testi { grid-template-columns: 1fr !important; }
+    .esim-counters { grid-template-columns: 1fr 1fr !important; }
+    .esim-features { grid-template-columns: 1fr !important; }
+    .esim-sec { padding-top: 70px !important; padding-bottom: 70px !important; }
+    .esim-hero { min-height: 0 !important; }
+    .esim-hero-pad { padding: 120px 6vw 96px !important; }
+  }
+  @media (max-width: 560px) {
+    .esim-cards { grid-template-columns: 1fr !important; }
+    .esim-works { grid-template-columns: 1fr !important; }
+    .esim-form2 { grid-template-columns: 1fr !important; }
+    .esim-counters { grid-template-columns: 1fr 1fr !important; }
+    .esim-hero-pad { padding: 110px 5vw 80px !important; }
+    .esim-sec { padding-left: 5vw !important; padding-right: 5vw !important; }
+  }
+  .esim-burger { display: none; }
+  @media (max-width: 860px) { .esim-burger { display: flex !important; } }
+</style>
+</helmet>
+
+<div style="width:100%;">
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.82); backdrop-filter:saturate(160%) blur(16px); -webkit-backdrop-filter:saturate(160%) blur(16px); border-bottom:1px solid rgba(24,35,31,0.07);">
+    <nav class="esim-nav" style="max-width:1240px; margin:0 auto; padding:13px 6vw; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="#inicio" style="display:flex; align-items:center; text-decoration:none;">
+        <img src="images/logo-esim.png" alt="ESIM SRL" style="height:42px; width:auto; display:block;">
+      </a>
+      <div style="display:flex; align-items:center; gap:34px;">
+        <div class="esim-menu" style="display:flex; align-items:center; gap:30px; font-size:15px; font-weight:600; color:#414B44;">
+          <a href="#servicios" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Servicios</a>
+          <a href="#nosotros" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Nosotros</a>
+          <a href="#trabajo" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Trabajos</a>
+          <a href="#contacto" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Contacto</a>
+        </div>
+        <a class="esim-menu" href="#contacto" style="background:#2F7D63; color:#fff; text-decoration:none; font-weight:700; font-size:15px; padding:11px 20px; border-radius:10px; box-shadow:0 6px 16px rgba(47,125,99,0.22); transition:background .2s, box-shadow .2s;" style-hover="background:#25634F; box-shadow:0 8px 20px rgba(47,125,99,0.32);">Solicitar cotización</a>
+        <button class="esim-burger" onClick="{{ toggleNav }}" aria-label="Menú" style="display:none; flex-direction:column; justify-content:center; gap:5px; width:44px; height:44px; padding:0; background:#fff; border:1px solid var(--line); border-radius:11px; cursor:pointer; align-items:center;">
+          <span style="width:20px; height:2px; background:#18231F; border-radius:2px; display:block;"></span>
+          <span style="width:20px; height:2px; background:#18231F; border-radius:2px; display:block;"></span>
+          <span style="width:20px; height:2px; background:#18231F; border-radius:2px; display:block;"></span>
+        </button>
+      </div>
+    </nav>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid var(--line); background:#fff; padding:10px 6vw 18px; display:flex; flex-direction:column; gap:2px;">
+        <a href="#servicios" onClick="{{ closeNav }}" style="text-decoration:none; color:#18231F; font-weight:600; font-size:16px; padding:13px 6px; border-bottom:1px solid #F0F3F1;">Servicios</a>
+        <a href="#nosotros" onClick="{{ closeNav }}" style="text-decoration:none; color:#18231F; font-weight:600; font-size:16px; padding:13px 6px; border-bottom:1px solid #F0F3F1;">Nosotros</a>
+        <a href="#trabajo" onClick="{{ closeNav }}" style="text-decoration:none; color:#18231F; font-weight:600; font-size:16px; padding:13px 6px; border-bottom:1px solid #F0F3F1;">Trabajos</a>
+        <a href="#contacto" onClick="{{ closeNav }}" style="text-decoration:none; color:#18231F; font-weight:600; font-size:16px; padding:13px 6px; border-bottom:1px solid #F0F3F1;">Contacto</a>
+        <a href="#contacto" onClick="{{ closeNav }}" style="text-align:center; background:#2F7D63; color:#fff; text-decoration:none; font-weight:700; font-size:16px; padding:14px; border-radius:11px; margin-top:12px;">Solicitar cotización</a>
+      </div>
+    </sc-if>
+  </header>
+
+  <section id="inicio" class="esim-hero" style="position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;">
+    <img src="images/hero.jpg" alt="Acondicionamiento de ductos al atardecer con hidrogrúa" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 42%;">
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,25,21,0.78) 0%, rgba(15,25,21,0.62) 50%, rgba(15,25,21,0.74) 100%);"></div>
+    <div style="position:absolute; left:0; right:0; bottom:0; height:130px; background:linear-gradient(0deg, var(--bg), transparent);"></div>
+    <div class="esim-hero-pad" style="position:relative; max-width:880px; margin:0 auto; padding:150px 6vw 130px; width:100%;">
+      <div style="display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.20); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); padding:7px 15px; border-radius:100px; font-size:12.5px; font-weight:700; letter-spacing:0.08em; color:#EAEFEC; margin-bottom:26px;">
+        <span style="width:7px; height:7px; border-radius:50%; background:#5FB293; display:block;"></span>
+        SERVICIOS INDUSTRIALES · OIL &amp; GAS
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(38px,5.2vw,64px); line-height:1.06; letter-spacing:-0.025em; margin:0 0 22px; color:#fff;">Soluciones de ingeniería y mantenimiento para la <span style="color:#7FC4A8; font-style:italic;">industria</span></h1>
+      <p style="font-size:19px; line-height:1.6; color:#D3DAD5; margin:0 auto 38px; max-width:620px; text-wrap:pretty;">Acondicionamiento de ductos, ajuste y reparación de equipos rotativos, logística con hidrogrúa y oficina técnica. Trabajo de campo y taller con estándares de seguridad y calidad.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+        <a href="#contacto" style="background:#2F7D63; color:#fff; text-decoration:none; font-weight:700; font-size:16px; padding:15px 30px; border-radius:11px; box-shadow:0 10px 26px rgba(47,125,99,0.36); transition:background .2s, transform .2s, box-shadow .2s;" style-hover="background:#25634F; transform:translateY(-2px); box-shadow:0 14px 32px rgba(47,125,99,0.48);">Solicitar una cotización</a>
+        <a href="#servicios" style="background:rgba(255,255,255,0.10); color:#fff; text-decoration:none; font-weight:700; font-size:16px; padding:15px 30px; border-radius:11px; border:1px solid rgba(255,255,255,0.28); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background .2s, border-color .2s;" style-hover="background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.45);">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showClients }}" hint-placeholder-val="{{ true }}">
+  <section class="esim-sec" style="background:var(--surface); padding:50px 6vw; border-bottom:1px solid var(--line);">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p style="text-align:center; font-size:12.5px; font-weight:700; letter-spacing:0.14em; color:#9AA29B; margin:0 0 30px;">EMPRESAS QUE CONFÍAN EN NOSOTROS</p>
+      <div class="esim-clients" style="display:flex; gap:18px; align-items:stretch; justify-content:center; flex-wrap:wrap;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:9px;">
+          <div style="width:172px; height:78px; border:1px solid var(--line); border-radius:14px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0 18px;"><img src="./logo_de_ypf-svg-mqtqz3d0.png" alt="YPF" style="max-width: 100%; max-height: 40px; width: 100px; height: 43px; display: block"></div>
+          <span style="font-size:12.5px; font-weight:700; color:#8A938C;">YPF</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:9px;">
+          <div style="width:172px; height:78px; border:1px solid var(--line); border-radius:14px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0 18px;"><img src="images/clients/airliquide.svg" alt="Air Liquide" style="max-width:100%; max-height:46px; width:auto; height:auto; display:block;"></div>
+          <span style="font-size:12.5px; font-weight:700; color:#8A938C;">Air Liquide</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:9px;">
+          <div style="width:172px; height:78px; border:1px solid var(--line); border-radius:14px; background:#FBFCFB; display:flex; align-items:center; justify-content:center; overflow:hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="cli-3" shape="rect" fit="contain" placeholder="Logo cliente" style="width:148px; height:58px;" hint-size="148px,58px"></x-import></div>
+          <span style="font-size:12.5px; font-weight:700; color:#8A938C;">YPF Poliducto</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:9px;">
+          <div style="width:172px; height:78px; border:1px solid var(--line); border-radius:14px; background:#FBFCFB; display:flex; align-items:center; justify-content:center; overflow:hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="cli-4" shape="rect" fit="contain" placeholder="Logo cliente" style="width:148px; height:58px;" hint-size="148px,58px"></x-import></div>
+          <span style="font-size:12.5px; font-weight:700; color:#8A938C;">Yac. Malargüe</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:9px;">
+          <div style="width:172px; height:78px; border:1px solid var(--line); border-radius:14px; background:#FBFCFB; display:flex; align-items:center; justify-content:center; overflow:hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="cli-5" shape="rect" fit="contain" placeholder="Logo cliente" style="width:148px; height:58px;" hint-size="148px,58px"></x-import></div>
+          <span style="font-size:12.5px; font-weight:700; color:#8A938C;">Tu empresa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="servicios" class="esim-sec" style="background:transparent; padding:100px 6vw;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 8px; color:#18231F;"><span style="color:#2F7D63; font-style:italic;">Servicios</span> que ofrecemos</h2>
+        <div style="width:54px; height:3px; border-radius:3px; background:#2F7D63; margin:0 auto 18px;"></div>
+        <p style="font-size:17.5px; line-height:1.6; color:#5C665F; margin:0; text-wrap:pretty;">Cubrimos el ciclo completo: desde la intervención en obra hasta la reparación de precisión y la ingeniería de repuestos.</p>
+      </div>
+      <div class="esim-cards" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+
+        <div class="esim-card" style="background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 12px 34px rgba(20,40,30,0.06); transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 50px rgba(20,40,30,0.12);">
+          <div style="position:relative; aspect-ratio:16/11; overflow:hidden;">
+            <img class="esim-card-img" src="images/ductos.jpg" alt="Acondicionamiento de ductos" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s;">
+            <span style="position:absolute; left:22px; bottom:-26px; width:54px; height:54px; border-radius:14px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 20px rgba(20,40,30,0.12); display:flex; align-items:center; justify-content:center;"><span style="width:22px; height:6px; border-radius:3px; background:#2F7D63; display:block;"></span></span>
+          </div>
+          <div style="padding:40px 24px 26px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18.5px; margin:0 0 9px; color:#18231F;">Acondicionamiento de ductos</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:#5C665F; margin:0;">Excavación, soldadura, revestimiento y puesta en servicio de cañerías y poliductos en obra.</p>
+          </div>
+        </div>
+
+        <div class="esim-card" style="background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 12px 34px rgba(20,40,30,0.06); transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 50px rgba(20,40,30,0.12);">
+          <div style="position:relative; aspect-ratio:16/11; overflow:hidden;">
+            <img class="esim-card-img" src="images/bomba.jpg" alt="Ajuste y reparación de equipos" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s;">
+            <span style="position:absolute; left:22px; bottom:-26px; width:54px; height:54px; border-radius:14px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 20px rgba(20,40,30,0.12); display:flex; align-items:center; justify-content:center;"><span style="width:20px; height:20px; border:3px solid #2F7D63; border-radius:50%; display:block;"></span></span>
+          </div>
+          <div style="padding:40px 24px 26px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18.5px; margin:0 0 9px; color:#18231F;">Ajuste y reparación de equipos</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:#5C665F; margin:0;">Bombas, compresores y motores. Desarme, mecanizado, ajuste y montaje con tolerancias de precisión.</p>
+          </div>
+        </div>
+
+        <div class="esim-card" style="background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 12px 34px rgba(20,40,30,0.06); transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 50px rgba(20,40,30,0.12);">
+          <div style="position:relative; aspect-ratio:16/11; overflow:hidden;">
+            <img class="esim-card-img" src="images/hidrogrua.jpg" alt="Logística con hidrogrúa" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s;">
+            <span style="position:absolute; left:22px; bottom:-26px; width:54px; height:54px; border-radius:14px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 20px rgba(20,40,30,0.12); display:flex; align-items:center; justify-content:center;"><span style="width:18px; height:18px; background:#2F7D63; transform:rotate(45deg); display:block;"></span></span>
+          </div>
+          <div style="padding:40px 24px 26px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18.5px; margin:0 0 9px; color:#18231F;">Logística con hidrogrúa</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:#5C665F; margin:0;">Transporte, izaje y movimiento de equipos pesados con camiones hidrogrúa y personal habilitado.</p>
+          </div>
+        </div>
+
+        <div class="esim-card" style="background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 12px 34px rgba(20,40,30,0.06); transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 50px rgba(20,40,30,0.12);">
+          <div style="position:relative; aspect-ratio:16/11; overflow:hidden; background:#11181E;">
+            <img class="esim-card-img" src="images/modelo3d.png" alt="Oficina técnica 3D y repuestos" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s;">
+            <span style="position:absolute; left:22px; bottom:-26px; width:54px; height:54px; border-radius:14px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 20px rgba(20,40,30,0.12); display:flex; align-items:center; justify-content:center;"><span style="width:18px; height:18px; border:3px solid #2F7D63; border-radius:4px; display:block;"></span></span>
+          </div>
+          <div style="padding:40px 24px 26px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18.5px; margin:0 0 9px; color:#18231F;">Oficina técnica · 3D y repuestos</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:#5C665F; margin:0;">Relevamiento, modelado 3D y fabricación de repuestos a medida cuando no hay original disponible.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="esim-sec" style="position:relative; padding:96px 6vw; color:#fff; overflow:hidden;">
+    <img src="images/about.jpg" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,28,23,0.93), rgba(18,28,23,0.96));"></div>
+    <div style="position:relative; max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 8px; color:#fff;">¿Por qué <span style="color:#7FC4A8; font-style:italic;">elegirnos</span>?</h2>
+        <div style="width:54px; height:3px; border-radius:3px; background:#3E9B7B; margin:0 auto;"></div>
+      </div>
+      <div class="esim-why" style="display:grid; grid-template-columns:1.05fr 1fr; gap:64px; align-items:center;">
+        <div>
+          <p style="font-size:17px; line-height:1.7; color:#C5CEC8; margin:0 0 30px; text-wrap:pretty;">Somos una empresa de servicios industriales con base en Cuyo y operación en Patagonia. Combinamos personal especializado, equipamiento propio y procesos controlados para resolver en obra y en taller, con seguridad y cumplimiento de plazos.</p>
+          <div style="display:flex; flex-direction:column; gap:22px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:9px;"><span style="font-weight:600; font-size:14.5px; color:#E6EBE7;">Seguridad y cumplimiento (HSE)</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#7FC4A8;">98%</span></div>
+              <div style="height:7px; border-radius:100px; background:rgba(255,255,255,0.12); overflow:hidden;"><div style="width:98%; height:100%; border-radius:100px; background:linear-gradient(90deg,#2F7D63,#4BA585);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:9px;"><span style="font-weight:600; font-size:14.5px; color:#E6EBE7;">Reparación de precisión</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#7FC4A8;">96%</span></div>
+              <div style="height:7px; border-radius:100px; background:rgba(255,255,255,0.12); overflow:hidden;"><div style="width:96%; height:100%; border-radius:100px; background:linear-gradient(90deg,#2F7D63,#4BA585);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:9px;"><span style="font-weight:600; font-size:14.5px; color:#E6EBE7;">Cumplimiento de plazos</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#7FC4A8;">97%</span></div>
+              <div style="height:7px; border-radius:100px; background:rgba(255,255,255,0.12); overflow:hidden;"><div style="width:97%; height:100%; border-radius:100px; background:linear-gradient(90deg,#2F7D63,#4BA585);"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="esim-counters" style="display:grid; grid-template-columns:1fr 1fr; gap:30px 24px;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:46px; height:46px; border-radius:12px; background:rgba(47,125,99,0.18); border:1px solid rgba(127,196,168,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center;"><span style="width:18px; height:5px; border-radius:3px; background:#7FC4A8; display:block;"></span></span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff;">+30</div><div style="font-size:13px; font-weight:600; color:#9FB0A7; margin-top:5px;">Años en la industria</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:46px; height:46px; border-radius:12px; background:rgba(47,125,99,0.18); border:1px solid rgba(127,196,168,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center;"><span style="width:17px; height:17px; border:3px solid #7FC4A8; border-radius:50%; display:block;"></span></span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff;">+3000</div><div style="font-size:13px; font-weight:600; color:#9FB0A7; margin-top:5px;">Equipos dinámicos intervenidos</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:46px; height:46px; border-radius:12px; background:rgba(47,125,99,0.18); border:1px solid rgba(127,196,168,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center;"><span style="width:15px; height:15px; background:#7FC4A8; transform:rotate(45deg); display:block;"></span></span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff;">+2000</div><div style="font-size:13px; font-weight:600; color:#9FB0A7; margin-top:5px;">Equipos intervenidos en campo</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:46px; height:46px; border-radius:12px; background:rgba(47,125,99,0.18); border:1px solid rgba(127,196,168,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center;"><span style="width:16px; height:16px; border:3px solid #7FC4A8; border-radius:4px; display:block;"></span></span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff;">24/7</div><div style="font-size:13px; font-weight:600; color:#9FB0A7; margin-top:5px;">Disponibilidad en obra</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="esim-features" style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:54px;">
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:28px 26px;">
+          <span style="width:44px; height:44px; border-radius:11px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; margin-bottom:16px;"><span style="width:16px; height:18px; border:2.5px solid #7FC4A8; border-radius:3px 3px 8px 8px; display:block;"></span></span>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#fff;">Seguridad primero</h3>
+          <p style="font-size:14px; line-height:1.6; color:#A7B4AC; margin:0;">Procedimientos y EPP en cada tarea, en campo y en taller.</p>
+        </div>
+        <div style="background:#2F7D63; border:1px solid #2F7D63; border-radius:16px; padding:28px 26px; box-shadow:0 18px 40px rgba(47,125,99,0.3);">
+          <span style="width:44px; height:44px; border-radius:11px; background:rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; margin-bottom:16px;"><span style="width:16px; height:16px; border:2.5px solid #fff; border-radius:50%; display:block;"></span></span>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#fff;">Equipamiento propio</h3>
+          <p style="font-size:14px; line-height:1.6; color:#E3F0EA; margin:0;">Hidrogrúas, taller y herramientas para responder rápido.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:28px 26px;">
+          <span style="width:44px; height:44px; border-radius:11px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; margin-bottom:16px;"><span style="width:18px; height:18px; border:2.5px solid #7FC4A8; border-radius:50%; display:block; position:relative;"></span></span>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#fff;">Soluciones a medida</h3>
+          <p style="font-size:14px; line-height:1.6; color:#A7B4AC; margin:0;">Ingeniería y repuestos propios cuando no hay original.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showVideo }}" hint-placeholder-val="{{ true }}">
+  <section class="esim-sec" style="background:transparent; padding:100px 6vw;">
+    <div style="max-width:1080px; margin:0 auto; text-align:center;">
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 8px; color:#18231F;">Nuestro trabajo en <span style="color:#2F7D63; font-style:italic;">movimiento</span></h2>
+      <div style="width:54px; height:3px; border-radius:3px; background:#2F7D63; margin:0 auto 40px;"></div>
+      <div id="esimVideoBox" style="position:relative; width:100%; aspect-ratio:16/9; border-radius:20px; overflow:hidden; background:#15211C; border:1px solid var(--line); box-shadow:0 28px 64px rgba(20,40,30,0.18);">
+        <img src="images/hidrogrua.jpg" alt="Trabajo de ESIM SRL" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:linear-gradient(160deg, rgba(15,25,21,0.42), rgba(15,25,21,0.66));">
+          <span style="width:76px; height:76px; border-radius:50%; background:#2F7D63; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 34px rgba(47,125,99,0.5);">
+            <span style="width:0; height:0; border-left:20px solid #fff; border-top:13px solid transparent; border-bottom:13px solid transparent; margin-left:5px; display:block;"></span>
+          </span>
+          <span style="font-family:'Courier New',monospace; font-size:13px; letter-spacing:0.04em; color:#E3E8E4; background:rgba(0,0,0,0.35); padding:6px 12px; border-radius:7px;">// sube tu video y lo incrustamos aquí</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="trabajo" style="background:var(--surface); padding:100px 0 0; border-top:1px solid var(--line);">
+    <div style="max-width:1240px; margin:0 auto; padding:0 6vw;">
+      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 8px; color:#18231F;">Proyectos <span style="color:#2F7D63; font-style:italic;">realizados</span></h2>
+        <div style="width:54px; height:3px; border-radius:3px; background:#2F7D63; margin:0 auto 18px;"></div>
+        <p style="font-size:17.5px; line-height:1.6; color:#5C665F; margin:0; text-wrap:pretty;">Trabajo real en campo y en taller: ductos, equipos rotativos, logística pesada e ingeniería.</p>
+      </div>
+    </div>
+    <div class="esim-works" style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; width:100%;">
+      <a class="esim-work" href="Trabajo.dc.html?p=ductos" style="position:relative; aspect-ratio:4/3; overflow:hidden; text-decoration:none; display:block;">
+        <img class="esim-work-img" src="images/ductos.jpg" alt="Acondicionamiento de ductos" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s;">
+        <div class="esim-work-ov" style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.15) 55%, rgba(15,25,21,0.45) 100%); opacity:0.85; transition:opacity .3s;"></div>
+        <span style="position:absolute; left:24px; bottom:46px; right:24px; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px;">Acondicionamiento de ductos</span>
+        <span style="position:absolute; left:24px; bottom:22px; color:#7FC4A8; font-weight:700; font-size:13.5px;">Ver trabajo →</span>
+      </a>
+      <a class="esim-work" href="Trabajo.dc.html?p=hidrogrua" style="position:relative; aspect-ratio:4/3; overflow:hidden; text-decoration:none; display:block;">
+        <img class="esim-work-img" src="images/hidrogrua.jpg" alt="Izaje con hidrogrúa" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s;">
+        <div class="esim-work-ov" style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.15) 55%, rgba(15,25,21,0.45) 100%); opacity:0.85; transition:opacity .3s;"></div>
+        <span style="position:absolute; left:24px; bottom:46px; right:24px; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px;">Logística e izaje con hidrogrúa</span>
+        <span style="position:absolute; left:24px; bottom:22px; color:#7FC4A8; font-weight:700; font-size:13.5px;">Ver trabajo →</span>
+      </a>
+      <a class="esim-work" href="Trabajo.dc.html?p=bomba" style="position:relative; aspect-ratio:4/3; overflow:hidden; text-decoration:none; display:block;">
+        <img class="esim-work-img" src="images/bomba.jpg" alt="Reparación de bomba B8 YPF Poliducto" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s;">
+        <div class="esim-work-ov" style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.15) 55%, rgba(15,25,21,0.45) 100%); opacity:0.85; transition:opacity .3s;"></div>
+        <span style="position:absolute; left:24px; bottom:46px; right:24px; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px;">Bomba B8 · YPF Poliducto</span>
+        <span style="position:absolute; left:24px; bottom:22px; color:#7FC4A8; font-weight:700; font-size:13.5px;">Ver trabajo →</span>
+      </a>
+      <a class="esim-work" href="Trabajo.dc.html?p=compresor" style="position:relative; aspect-ratio:4/3; overflow:hidden; text-decoration:none; display:block;">
+        <img class="esim-work-img" src="images/compresor.jpg" alt="Mantenimiento de compresor Air Liquide" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s;">
+        <div class="esim-work-ov" style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.15) 55%, rgba(15,25,21,0.45) 100%); opacity:0.85; transition:opacity .3s;"></div>
+        <span style="position:absolute; left:24px; bottom:46px; right:24px; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px;">Compresor · Air Liquide</span>
+        <span style="position:absolute; left:24px; bottom:22px; color:#7FC4A8; font-weight:700; font-size:13.5px;">Ver trabajo →</span>
+      </a>
+      <a class="esim-work" href="Trabajo.dc.html?p=motor" style="position:relative; aspect-ratio:4/3; overflow:hidden; text-decoration:none; display:block;">
+        <img class="esim-work-img" src="images/motor.jpg" alt="Reparación de motor Cooper Superior" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s;">
+        <div class="esim-work-ov" style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.15) 55%, rgba(15,25,21,0.45) 100%); opacity:0.85; transition:opacity .3s;"></div>
+        <span style="position:absolute; left:24px; bottom:46px; right:24px; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px;">Motor Cooper Superior</span>
+        <span style="position:absolute; left:24px; bottom:22px; color:#7FC4A8; font-weight:700; font-size:13.5px;">Ver trabajo →</span>
+      </a>
+      <a class="esim-work" href="Trabajo.dc.html?p=td" style="position:relative; aspect-ratio:4/3; overflow:hidden; background:#11181E; text-decoration:none; display:block;">
+        <img class="esim-work-img" src="images/modelo3d.png" alt="Modelo 3D de repuesto" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s;">
+        <div class="esim-work-ov" style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.15) 55%, rgba(15,25,21,0.45) 100%); opacity:0.85; transition:opacity .3s;"></div>
+        <span style="position:absolute; left:24px; bottom:46px; right:24px; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px;">Oficina técnica · 3D y repuestos</span>
+        <span style="position:absolute; left:24px; bottom:22px; color:#7FC4A8; font-weight:700; font-size:13.5px;">Ver trabajo →</span>
+      </a>
+    </div>
+  </section>
+
+  <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+  <section class="esim-sec" style="background:transparent; padding:100px 6vw;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:620px; margin:0 auto 52px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 8px; color:#18231F;">La confianza de quienes nos <span style="color:#2F7D63; font-style:italic;">eligen</span></h2>
+        <div style="width:54px; height:3px; border-radius:3px; background:#2F7D63; margin:0 auto;"></div>
+      </div>
+      <div class="esim-testi" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+        <div style="background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; box-shadow:0 12px 34px rgba(20,40,30,0.05);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:42px; line-height:1; color:#2F7D63; margin-bottom:12px;">"</div>
+          <p style="font-size:16.5px; line-height:1.62; color:#3A433D; margin:0 0 26px; flex:1; text-wrap:pretty;">Respondieron a una parada de planta en tiempo récord y dejaron el equipo operativo. Cumplieron en seguridad y plazos.</p>
+          <div style="display:flex; align-items:center; gap:13px;">
+            <span style="width:44px; height:44px; border-radius:50%; background:#2F7D63; display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px;">JM</span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; color:#18231F;">Jefe de Mantenimiento</div><div style="font-size:13.5px; color:#8A938C; font-weight:600;">Operadora de Oil &amp; Gas</div></div>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; box-shadow:0 12px 34px rgba(20,40,30,0.05);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:42px; line-height:1; color:#2F7D63; margin-bottom:12px;">"</div>
+          <p style="font-size:16.5px; line-height:1.62; color:#3A433D; margin:0 0 26px; flex:1; text-wrap:pretty;">Fabricaron un repuesto que ya no se conseguía a partir de un modelo 3D. Excelente nivel técnico y trato.</p>
+          <div style="display:flex; align-items:center; gap:13px;">
+            <span style="width:44px; height:44px; border-radius:50%; background:#2F7D63; display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px;">SC</span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; color:#18231F;">Supervisor de Compras</div><div style="font-size:13.5px; color:#8A938C; font-weight:600;">Planta industrial</div></div>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; box-shadow:0 12px 34px rgba(20,40,30,0.05);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:42px; line-height:1; color:#2F7D63; margin-bottom:12px;">"</div>
+          <p style="font-size:16.5px; line-height:1.62; color:#3A433D; margin:0 0 26px; flex:1; text-wrap:pretty;">El servicio de hidrogrúa y logística fue clave para mover equipos pesados sin contratiempos. Muy recomendables.</p>
+          <div style="display:flex; align-items:center; gap:13px;">
+            <span style="width:44px; height:44px; border-radius:50%; background:#2F7D63; display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px;">RL</span>
+            <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; color:#18231F;">Responsable de Logística</div><div style="font-size:13.5px; color:#8A938C; font-weight:600;">Yacimiento Malargüe</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="contacto" class="esim-sec" style="background:var(--surface); border-top:1px solid var(--line); padding:100px 6vw;">
+    <div class="esim-2col" style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;">
+      <div>
+        <p style="font-size:13px; font-weight:700; letter-spacing:0.1em; color:#2F7D63; margin:0 0 14px;">CONTACTO</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 18px; color:#18231F;">Contanos qué necesitás resolver.</h2>
+        <p style="font-size:17.5px; line-height:1.6; color:#5C665F; margin:0 0 36px; text-wrap:pretty;">Enviá tu consulta y te respondemos con una propuesta técnica y un presupuesto a medida.</p>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:44px; height:44px; border-radius:12px; background:var(--primary-soft); border:1px solid rgba(47,125,99,0.18); display:flex; align-items:center; justify-content:center;"><span style="width:14px; height:14px; border:2.5px solid #2F7D63; border-radius:50%; display:block;"></span></span>
+            <div><div style="font-size:13px; font-weight:700; color:#9AA29B; letter-spacing:0.04em;">TELÉFONO</div><div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px; color:#18231F;">+54 9 261 243-4393</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:44px; height:44px; border-radius:12px; background:var(--primary-soft); border:1px solid rgba(47,125,99,0.18); display:flex; align-items:center; justify-content:center;"><span style="width:16px; height:11px; border:2.5px solid #2F7D63; border-radius:3px; display:block;"></span></span>
+            <div><div style="font-size:13px; font-weight:700; color:#9AA29B; letter-spacing:0.04em;">EMAIL</div><div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px; color:#18231F;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="34575b5a405557405b7451475d594746581a575b59">[email&#160;protected]</a></div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="width:44px; height:44px; border-radius:12px; background:var(--primary-soft); border:1px solid rgba(47,125,99,0.18); display:flex; align-items:center; justify-content:center;"><span style="width:11px; height:11px; background:#2F7D63; transform:rotate(45deg); display:block;"></span></span>
+            <div><div style="font-size:13px; font-weight:700; color:#9AA29B; letter-spacing:0.04em;">UBICACIÓN</div><a href="https://maps.app.goo.gl/Z4U9gA9sZqHPpwsT9" target="_blank" rel="noopener" style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px; color:#2F7D63; text-decoration:none;" style-hover="text-decoration:underline;">Ver en Google Maps →</a></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--line); border-radius:20px; padding:36px; box-shadow:0 20px 50px rgba(20,40,30,0.07);">
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:380px; gap:18px;">
+            <span style="width:64px; height:64px; border-radius:50%; background:var(--primary-soft); border:1px solid rgba(47,125,99,0.25); display:flex; align-items:center; justify-content:center;"><span style="width:22px; height:12px; border-left:3px solid #2F7D63; border-bottom:3px solid #2F7D63; transform:rotate(-45deg) translate(2px,-2px); display:block;"></span></span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; margin:0; color:#18231F;">¡Gracias por escribirnos!</h3>
+            <p style="font-size:16px; color:#5C665F; margin:0; max-width:300px;">Recibimos tu consulta y te contactaremos a la brevedad.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}">
+            <div style="display:flex; flex-direction:column; gap:18px;">
+              <div>
+                <label style="display:block; font-size:13.5px; font-weight:700; color:#3C453E; margin-bottom:7px;">Nombre y empresa</label>
+                <input type="text" required="" placeholder="Tu nombre / empresa" style="width:100%; padding:13px 15px; background:#FBFCFB; border:1px solid #DCE3DF; border-radius:10px; font-family:'Manrope',sans-serif; font-size:15px; color:#18231F; outline:none; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#2F7D63; box-shadow:0 0 0 3px rgba(47,125,99,0.14);">
+              </div>
+              <div class="esim-form2" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                <div>
+                  <label style="display:block; font-size:13.5px; font-weight:700; color:#3C453E; margin-bottom:7px;">Email</label>
+                  <input type="email" required="" placeholder="tu@email.com" style="width:100%; padding:13px 15px; background:#FBFCFB; border:1px solid #DCE3DF; border-radius:10px; font-family:'Manrope',sans-serif; font-size:15px; color:#18231F; outline:none; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#2F7D63; box-shadow:0 0 0 3px rgba(47,125,99,0.14);">
+                </div>
+                <div>
+                  <label style="display:block; font-size:13.5px; font-weight:700; color:#3C453E; margin-bottom:7px;">Teléfono</label>
+                  <input type="tel" placeholder="Opcional" style="width:100%; padding:13px 15px; background:#FBFCFB; border:1px solid #DCE3DF; border-radius:10px; font-family:'Manrope',sans-serif; font-size:15px; color:#18231F; outline:none; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#2F7D63; box-shadow:0 0 0 3px rgba(47,125,99,0.14);">
+                </div>
+              </div>
+              <div>
+                <label style="display:block; font-size:13.5px; font-weight:700; color:#3C453E; margin-bottom:7px;">¿Qué necesitás?</label>
+                <textarea required="" rows="4" placeholder="Describí el trabajo o equipo a intervenir..." style="width:100%; padding:13px 15px; background:#FBFCFB; border:1px solid #DCE3DF; border-radius:10px; font-family:'Manrope',sans-serif; font-size:15px; color:#18231F; outline:none; resize:vertical; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#2F7D63; box-shadow:0 0 0 3px rgba(47,125,99,0.14);"></textarea>
+              </div>
+              <button type="submit" style="width:100%; background:#2F7D63; color:#fff; border:none; font-family:'Manrope',sans-serif; font-weight:700; font-size:16px; padding:15px; border-radius:11px; cursor:pointer; box-shadow:0 10px 26px rgba(47,125,99,0.3); transition:background .2s, transform .2s;" style-hover="background:#25634F; transform:translateY(-2px);">Enviar consulta</button>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#15211C; padding:60px 6vw 38px; color:#fff;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap; padding-bottom:38px; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <div style="max-width:340px;">
+          <span style="display:inline-flex; background:#fff; border-radius:12px; padding:10px 14px; margin-bottom:16px;"><img src="images/logo-esim.png" alt="ESIM SRL" style="height:34px; width:auto; display:block;"></span>
+          <p style="font-size:15px; line-height:1.6; color:#9FACA4; margin:0;">Servicios industriales para Oil &amp; Gas: ductos, equipos rotativos, hidrogrúa y oficina técnica. Cuyo y Patagonia.</p>
+        </div>
+        <div style="display:flex; gap:64px; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px; font-weight:700; letter-spacing:0.08em; color:#6F7C74; margin-bottom:16px;">EMPRESA</div>
+            <div style="display:flex; flex-direction:column; gap:11px; font-size:15px; font-weight:600;">
+              <a href="#servicios" style="color:#C0CAC3; text-decoration:none; transition:color .2s;" style-hover="color:#fff;">Servicios</a>
+              <a href="#nosotros" style="color:#C0CAC3; text-decoration:none; transition:color .2s;" style-hover="color:#fff;">Nosotros</a>
+              <a href="#trabajo" style="color:#C0CAC3; text-decoration:none; transition:color .2s;" style-hover="color:#fff;">Trabajos</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px; font-weight:700; letter-spacing:0.08em; color:#6F7C74; margin-bottom:16px;">CONTACTO</div>
+            <div style="display:flex; flex-direction:column; gap:11px; font-size:15px; font-weight:600;">
+              <span style="color:#C0CAC3;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8deee2e3f9eceef9e2cde8fee4e0feffe1a3eee2e0">[email&#160;protected]</a></span>
+              <span style="color:#C0CAC3;">+54 9 261 243-4393</span>
+              <a href="https://maps.app.goo.gl/Z4U9gA9sZqHPpwsT9" target="_blank" rel="noopener" style="color:#C0CAC3; text-decoration:none; transition:color .2s;" style-hover="color:#fff;">Ubicación</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:26px; flex-wrap:wrap; gap:12px;">
+        <span style="font-size:14px; color:#6F7C74;">© {{ year }} ESIM SRL. Todos los derechos reservados.</span>
+        <span style="font-size:14px; color:#6F7C74;">Seguridad · Calidad · Compromiso</span>
+      </div>
+    </div>
+  </footer>
+
+  <div style="position:fixed; right:24px; bottom:24px; z-index:300; font-family:'Manrope',sans-serif;">
+    <sc-if value="{{ assistantOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; right: 0; bottom: 80px; width: 360px; max-width: 86vw; max-height: 74vh; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 24px 60px rgba(20,40,30,0.22); overflow: hidden">
+        <div style="background: #2F7D63; padding: 16px 18px; display: flex; align-items: center; gap: 12px">
+          <span style="position:relative; width:42px; height:42px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; color:#2F7D63; flex-shrink:0;">A<span style="position:absolute; right:0; bottom:0; width:11px; height:11px; border-radius:50%; background:#5FB293; border:2px solid #2F7D63;"></span></span>
+          <div style="flex:1;">
+            <div style="color: #fff; font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 14px; line-height: 1.15">Andrea</div>
+            <div style="color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600">Asistente virtual · En línea</div>
+          </div>
+          <span onClick="{{ closeAssistant }}" style="color:#fff; font-size:26px; line-height:1; cursor:pointer; padding:2px 6px; opacity:0.85;" style-hover="opacity:1;">×</span>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:12px; background:#FBFCFB; min-height:150px;">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="1">
+            <div style="{{ m.rowStyle }}">
+              <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; justify-content:flex-start;">
+              <div style="padding:10px 13px; background:#EEF2F0; color:#8A938C; border-radius:14px 14px 14px 4px; font-size:12px;">Andrea está escribiendo…</div>
+            </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ leadReady }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:2px 14px 8px;">
+            <a href="{{ leadHref }}" target="_blank" rel="noopener" style="display:block; text-align:center; font-size:11.5px; font-weight:600; color:#7B847C; text-decoration:underline;">¿No se abrió WhatsApp? Tocá acá</a>
+          </div>
+        </sc-if>
+        <div style="padding:2px 14px 12px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span onClick="{{ qCotizacion }}" style="cursor: pointer; font-size: 12px; font-weight: 700; color: #2F7D63; background: var(--primary-soft); border: 1px solid rgba(47,125,99,0.25); padding: 8px 12px; border-radius: 100px" style-hover="background:rgba(47,125,99,0.18);">Solicitar cotización</span>
+          <span onClick="{{ qTrabajos }}" style="cursor: pointer; font-size: 12px; font-weight: 700; color: #2F7D63; background: var(--primary-soft); border: 1px solid rgba(47,125,99,0.25); padding: 8px 12px; border-radius: 100px" style-hover="background:rgba(47,125,99,0.18);">Ver trabajos</span>
+          <span onClick="{{ qWhatsapp }}" style="cursor: pointer; font-size: 12px; font-weight: 700; color: #2F7D63; background: var(--primary-soft); border: 1px solid rgba(47,125,99,0.25); padding: 8px 12px; border-radius: 100px" style-hover="background:rgba(47,125,99,0.18);">WhatsApp</span>
+        </div>
+        <form onSubmit="{{ sendMessage }}" style="display:flex; gap:8px; padding:12px 14px; border-top:1px solid var(--line);">
+          <input ref="{{ inputRef }}" type="text" placeholder="Escribí tu consulta..." style="flex: 1; min-width: 0; padding: 11px 14px; background:#FBFCFB; border: 1px solid #DCE3DF; border-radius: 10px; font-family: 'Manrope',sans-serif; font-size: 12px; color: #18231F; outline: none" style-focus="border-color:#2F7D63; box-shadow:0 0 0 3px rgba(47,125,99,0.14);">
+          <button type="submit" style="background:#2F7D63; color:#fff; border:none; border-radius:10px; padding:0 16px; font-weight:700; font-size:18px; cursor:pointer;" style-hover="background:#25634F;">→</button>
+        </form>
+      </div>
+    </sc-if>
+    <div onClick="{{ toggleAssistant }}" style="width:62px; height:62px; border-radius:50%; background:#2F7D63; box-shadow:0 12px 30px rgba(47,125,99,0.4); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .2s, background .2s;" style-hover="background:#25634F; transform:scale(1.05);">
+      <span style="position:relative; width:30px; height:24px; background:#fff; border-radius:7px; display:flex; align-items:center; justify-content:center; gap:3px;">
+        <span style="width:4px; height:4px; border-radius:50%; background:#2F7D63; display:block;"></span>
+        <span style="width:4px; height:4px; border-radius:50%; background:#2F7D63; display:block;"></span>
+        <span style="width:4px; height:4px; border-radius:50%; background:#2F7D63; display:block;"></span>
+      </span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{
+  &quot;showClients&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; },
+  &quot;showVideo&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; },
+  &quot;showTestimonials&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; }
+}">
+class Component extends DCLogic {
+  GREETING = "¡Hola! Qué gusto saludarte. Soy Andrea, de ESIM SRL. Contame, ¿en qué te puedo ayudar hoy? Si querés, te cuento sobre nuestros servicios o tomo tus datos para una cotización. 😊";
+  MANAGER = "Juan Pablo Satlari";
+  MANAGER_WA = "5492612434393";
+  SYSTEM = [
+    "Sos Andrea, la recepcionista virtual de ESIM SRL. Atendés como una recepcionista humana, cálida y empática:",
+    "saludás con calidez, escuchás, mostrás interés genuino ('¡Qué bueno que nos escribas!', 'Entiendo, contame un poco más'),",
+    "y hacés que la persona se sienta acompañada y bien atendida. Hablás en español rioplatense (voseo), natural y cercano,",
+    "como una charla real, NO como un robot ni con respuestas enlatadas. Usá el nombre de la persona cuando lo sepas.",
+    "Mantené las respuestas conversacionales y breves (1 a 3 oraciones) y, si viene al caso, terminá con una pregunta amable para seguir la charla.",
+    "Está bien usar alguna interjección cálida ('¡Claro!', 'Perfecto', 'Genial') con moderación; nada de emojis en exceso (a lo sumo uno ocasional).",
+    "",
+    "ESIM SRL es una empresa de servicios industriales para petróleo y gas:",
+    "acondicionamiento de ductos; ajuste y reparación de equipos rotativos (bombas, compresores, motores);",
+    "logística e izaje con hidrogrúa; y oficina técnica con modelado 3D y fabricación de repuestos.",
+    "Opera en Cuyo y Patagonia, con más de 30 años de trayectoria, +3000 equipos dinámicos y +2000 equipos en campo intervenidos.",
+    "Respondé con gusto las preguntas del cliente sobre la empresa y los servicios. Si no sabés un dato puntual (precio, plazo exacto),",
+    "decilo con naturalidad y ofrecé tomar los datos para que el equipo lo responda. No inventes datos ni precios.",
+    "",
+    "Si el cliente quiere una cotización o presupuesto, pedí los datos DE A UNO, de forma natural y amable, en este orden:",
+    "1) nombre y empresa, 2) un contacto (teléfono o email), 3) qué necesita (servicio o equipo), 4) ubicación o yacimiento.",
+    "Cuando ya tengas al menos nombre, contacto y qué necesita, cerrá con calidez: agradecé al cliente de corazón,",
+    "decile que le pasás la solicitud al gerente Juan Pablo Satlari y que lo van a contactar a la brevedad,",
+    "y agregá AL FINAL una última línea con EXACTAMENTE este formato y nada más en esa línea:",
+    "[LEAD]{\"nombre\":\"\",\"empresa\":\"\",\"contacto\":\"\",\"necesidad\":\"\",\"ubicacion\":\"\"}[/LEAD]",
+    "Completá los campos con lo que dio el cliente; si falta empresa o ubicación poné \"-\". No inventes datos.",
+    "Nunca muestres ni menciones el bloque [LEAD] como texto de la charla; es solo para el sistema."
+  ].join(" ");
+
+  inputRef = React.createRef();
+  convo = [];
+  flow = { step: 0, data: {} };
+  state = { submitted: false, assistantOpen: false, assistantDismissed: false, typing: false, lead: null, messages: [], navOpen: false };
+
+  componentDidMount() {
+    this.setState({ messages: [{ from: "andrea", text: this.GREETING }] });
+    this._timer = setTimeout(() => {
+      if (!this.state.assistantDismissed) this.setState({ assistantOpen: true });
+    }, 5000);
+  }
+  componentWillUnmount() { clearTimeout(this._timer); }
+
+  addMsg(from, text) { this.setState((s) => ({ messages: [...s.messages, { from, text }] })); }
+
+  waLink(lead) {
+    const l = lead || {};
+    const msg = "*Nueva solicitud de cotización — Web ESIM SRL*\n\n"
+      + "Nombre: " + (l.nombre || "-") + "\n"
+      + "Empresa: " + (l.empresa || "-") + "\n"
+      + "Contacto: " + (l.contacto || "-") + "\n"
+      + "Necesidad: " + (l.necesidad || "-") + "\n"
+      + "Ubicación: " + (l.ubicacion || "-");
+    return "https://wa.me/" + this.MANAGER_WA + "?text=" + encodeURIComponent(msg);
+  }
+
+  openWa(url) {
+    try {
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (e) {
+      window.open(url, "_blank");
+    }
+  }
+
+  aiAvailable() { return !!(window.claude && typeof window.claude.complete === "function"); }
+  delay(ms) { return new Promise((r) => setTimeout(r, ms)); }
+
+  async sendUserText(text) {
+    if (this.aiAvailable()) {
+      if (this.state.typing) return;
+      this.addMsg("user", text);
+      this.setState({ typing: true });
+      try { await this.aiReply(text); return; }
+      catch (e) { /* si la IA falla, seguimos en modo guiado */ }
+      await this.scriptedReply(text);
+      return;
+    }
+    // Modo guiado: nunca descartamos un mensaje
+    this.addMsg("user", text);
+    this.setState({ typing: true });
+    await this.scriptedReply(text);
+  }
+
+  async aiReply(text) {
+    this.convo.push({ role: "user", content: text });
+    const reply = await window.claude.complete({
+      messages: [
+        { role: "user", content: this.SYSTEM },
+        { role: "assistant", content: this.GREETING },
+        ...this.convo,
+      ],
+    });
+    this.convo.push({ role: "assistant", content: reply });
+    let lead = null;
+    let visible = reply;
+    const m = reply.match(/\[LEAD\]([\s\S]*?)\[\/LEAD\]/);
+    if (m) {
+      visible = reply.replace(m[0], "").trim();
+      try { lead = JSON.parse(m[1]); } catch (e) { lead = null; }
+    }
+    this.setState({ typing: false });
+    if (visible) this.addMsg("andrea", visible);
+    if (lead) this.finalizeLead(lead);
+  }
+
+  // ----- Modo guiado (sin IA): recepcionista paso a paso -----
+  firstName(t) { const w = (t || "").trim().split(/\s+/)[0] || ""; return w ? w.charAt(0).toUpperCase() + w.slice(1) : ""; }
+  faqAnswer(t) {
+    if (/(servici|hac[eé]|ofrec|trabaj[oa]s? de|rubro|a qu[eé] se dedic)/.test(t))
+      return "Hacemos acondicionamiento de ductos, ajuste y reparación de bombas, compresores y motores, logística e izaje con hidrogrúa, y oficina técnica con modelado 3D y fabricación de repuestos.";
+    if (/(ubicaci|d[oó]nde|zona|regi[oó]n|lugar|provincia)/.test(t))
+      return "Trabajamos en Cuyo y Patagonia, tanto en campo como en taller.";
+    if (/(experiencia|a[ñn]os|trayectoria|hace cu[aá]nto|antig)/.test(t))
+      return "Tenemos más de 30 años en la industria, con +3000 equipos dinámicos y +2000 equipos en campo intervenidos.";
+    if (/(precio|costo|cu[aá]nto|cotiz|presupuesto|valor|tarifa)/.test(t))
+      return "El presupuesto lo arma nuestro equipo según tu caso puntual. Con gusto te tomo los datos y Juan Pablo te contacta.";
+    if (/(hola|buenas|buen d[ií]a|buenas tardes|qué tal|que tal)/.test(t) && t.length < 25)
+      return "¡Hola! Un gusto. Contame en qué te puedo ayudar.";
+    if (/(gracias|muchas gracias|genial|perfecto|ok|dale)/.test(t) && t.length < 20)
+      return "¡A vos! ¿Te puedo ayudar con algo más?";
+    return "";
+  }
+
+  async scriptedReply(text) {
+    const t = (text || "").toLowerCase();
+    const out = [];
+    let finalize = null;
+    const step = this.flow.step;
+    if (step <= 0) {
+      const faq = this.faqAnswer(t);
+      if (faq) out.push(faq);
+      out.push("Para ayudarte mejor y que Juan Pablo te prepare una propuesta, ¿me pasás tu nombre y empresa?");
+      this.flow.step = 1;
+    } else if (step === 1) {
+      this.flow.data.nombre = text;
+      out.push("¡Gracias, " + this.firstName(text) + "! ¿A qué teléfono o email te contactamos?");
+      this.flow.step = 2;
+    } else if (step === 2) {
+      this.flow.data.contacto = text;
+      out.push("Perfecto. Contame brevemente qué necesitás resolver (equipo o servicio).");
+      this.flow.step = 3;
+    } else if (step === 3) {
+      this.flow.data.necesidad = text;
+      out.push("Entendido. ¿En qué localidad o yacimiento sería el trabajo?");
+      this.flow.step = 4;
+    } else if (step === 4) {
+      this.flow.data.ubicacion = text;
+      const d = this.flow.data;
+      finalize = { nombre: d.nombre || "-", empresa: "-", contacto: d.contacto || "-", necesidad: d.necesidad || "-", ubicacion: d.ubicacion || "-" };
+      this.flow = { step: 9, data: {} };
+    } else {
+      const faq = this.faqAnswer(t);
+      out.push(faq || "¡Con gusto! Si querés iniciar otra consulta, contame qué necesitás y te tomo los datos.");
+      if (!faq) this.flow = { step: 0, data: {} };
+    }
+    await this.delay(650);
+    this.setState({ typing: false });
+    for (const msg of out) this.addMsg("andrea", msg);
+    if (finalize) this.finalizeLead(finalize, true);
+  }
+
+  finalizeLead(lead, scripted) {
+    const url = this.waLink(lead);
+    this.setState({ lead });
+    this.openWa(url);
+    const nm = this.firstName(lead.nombre || "");
+    this.addMsg("andrea", (nm ? "¡Gracias, " + nm + "! " : "¡Gracias! ") + "Ya le estoy enviando tu solicitud a Juan Pablo Satlari por WhatsApp; en breve se pone en contacto con vos. 🙌");
+  }
+
+  toggleAssistant = () => this.setState((s) => ({ assistantOpen: !s.assistantOpen, assistantDismissed: true }));
+  closeAssistant = () => this.setState({ assistantOpen: false, assistantDismissed: true });
+  toggleNav = () => this.setState((s) => ({ navOpen: !s.navOpen }));
+  closeNav = () => this.setState({ navOpen: false });
+  sendMessage = (e) => {
+    e.preventDefault();
+    const el = this.inputRef.current;
+    const v = el ? el.value.trim() : "";
+    if (!v) return;
+    el.value = "";
+    this.sendUserText(v);
+  };
+  qCotizacion = () => { this.sendUserText("Hola, quiero solicitar una cotización."); };
+  qTrabajos = () => {
+    this.addMsg("user", "Quiero ver trabajos realizados");
+    this.addMsg("andrea", "Mirá nuestra sección de trabajos: ductos, hidrogrúa, bombas, compresores, motores y oficina técnica 3D.");
+    window.location.hash = "trabajo";
+  };
+  qWhatsapp = () => {
+    window.open("https://wa.me/" + this.MANAGER_WA + "?text=" + encodeURIComponent("Hola, quiero hacer una consulta a ESIM SRL."), "_blank");
+  };
+  enviarGerente = () => { this.openWa(this.waLink(this.state.lead)); };
+
+  renderVals() {
+    const messages = this.state.messages.map((m) => ({
+      text: m.text,
+      rowStyle: { display: "flex", justifyContent: m.from === "user" ? "flex-end" : "flex-start" },
+      bubbleStyle: m.from === "user"
+        ? { maxWidth: "82%", padding: "10px 13px", background: "#2F7D63", color: "#fff", borderRadius: "14px 14px 4px 14px", fontSize: "12px", lineHeight: 1.5 }
+        : { maxWidth: "82%", padding: "10px 13px", background: "#EEF2F0", color: "#28332D", borderRadius: "14px 14px 14px 4px", fontSize: "12px", lineHeight: 1.5 },
+    }));
+    return {
+      typing: this.state.typing,
+      leadReady: !!this.state.lead,
+      leadHref: this.state.lead ? this.waLink(this.state.lead) : "#",
+      enviarGerente: this.enviarGerente,
+      navOpen: this.state.navOpen,
+      toggleNav: this.toggleNav,
+      closeNav: this.closeNav,
+      showClients: this.props.showClients ?? true,
+      showVideo: this.props.showVideo ?? true,
+      showTestimonials: this.props.showTestimonials ?? true,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      year: new Date().getFullYear(),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      assistantOpen: this.state.assistantOpen,
+      messages,
+      inputRef: this.inputRef,
+      sendMessage: this.sendMessage,
+      toggleAssistant: this.toggleAssistant,
+      closeAssistant: this.closeAssistant,
+      qCotizacion: this.qCotizacion,
+      qTrabajos: this.qTrabajos,
+      qWhatsapp: this.qWhatsapp,
+    };
+  }
+}
+</script>
+</body>
+</html>

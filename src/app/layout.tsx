@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import "@fontsource-variable/inter";
-import "@fontsource-variable/montserrat";
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/space-grotesk";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Asistente from "@/components/Asistente";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     siteName: site.name,
-    images: ["/img/izaje/izaje-02.webp"],
+    images: ["/img/izaje/izaje-01.webp"],
   },
 };
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Asistente />
       </body>
     </html>
   );

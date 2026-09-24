@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F6F5;
+    --surface: #FFFFFF;
+    --ink: #18231F;
+    --ink-2: #4C564F;
+    --primary: #2F7D63;
+    --primary-d: #25634F;
+    --primary-soft: rgba(47,125,99,0.10);
+    --line: #E6EAE7;
+    --dark: #15211C;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Manrope', system-ui, sans-serif; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(760px 520px at 100% -8%, rgba(47,125,99,0.06), transparent 60%),
+      radial-gradient(680px 560px at -5% 40%, rgba(47,125,99,0.05), transparent 60%);
+  }
+  x-dc, x-dc > div { position: relative; z-index: 1; }
+  ::selection { background: rgba(47,125,99,0.22); color: #15211C; }
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: #E9EDEB; }
+  ::-webkit-scrollbar-thumb { background: #C3CCC7; border-radius: 10px; border: 3px solid #E9EDEB; }
+  ::-webkit-scrollbar-thumb:hover { background: #AAB5AF; }
+  @media (max-width: 860px) {
+    .esim-menu { display: none !important; }
+    .esim-detail { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .esim-ficha { position: static !important; }
+    .esim-gallery { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 540px) {
+    .esim-gallery { grid-template-columns: 1fr !important; }
+    .esim-prevnext { grid-template-columns: 1fr !important; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden;">
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.82); backdrop-filter:saturate(160%) blur(16px); -webkit-backdrop-filter:saturate(160%) blur(16px); border-bottom:1px solid rgba(24,35,31,0.07);">
+    <nav style="max-width:1240px; margin:0 auto; padding:13px 6vw; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+        <img src="images/logo-esim.png" alt="ESIM SRL" style="height:42px; width:auto; display:block;">
+      </a>
+      <div style="display:flex; align-items:center; gap:34px;">
+        <div class="esim-menu" style="display:flex; align-items:center; gap:30px; font-size:15px; font-weight:600; color:#414B44;">
+          <a href="index.html#servicios" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Servicios</a>
+          <a href="index.html#nosotros" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Nosotros</a>
+          <a href="index.html#trabajo" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Trabajos</a>
+          <a href="index.html#contacto" style="text-decoration:none; color:inherit; transition:color .2s;" style-hover="color:#2F7D63;">Contacto</a>
+        </div>
+        <a href="index.html#contacto" style="background:#2F7D63; color:#fff; text-decoration:none; font-weight:700; font-size:15px; padding:11px 20px; border-radius:10px; box-shadow:0 6px 16px rgba(47,125,99,0.22); transition:background .2s, box-shadow .2s;" style-hover="background:#25634F; box-shadow:0 8px 20px rgba(47,125,99,0.32);">Solicitar cotización</a>
+      </div>
+    </nav>
+  </header>
+
+  <section style="position:relative; min-height:58vh; display:flex; align-items:flex-end; overflow:hidden;">
+    {{ heroImgEl }}
+    <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,25,21,0.92) 0%, rgba(15,25,21,0.58) 50%, rgba(15,25,21,0.4) 100%);"></div>
+    <div style="position:absolute; left:0; right:0; bottom:0; height:120px; background:linear-gradient(0deg, var(--bg), transparent);"></div>
+    <div style="position:relative; max-width:1240px; margin:0 auto; padding:0 6vw 60px; width:100%;">
+      <a href="index.html#trabajo" style="display:inline-flex; align-items:center; gap:8px; color:#C5CEC8; text-decoration:none; font-weight:600; font-size:14.5px; margin-bottom:22px; transition:color .2s;" style-hover="color:#fff;">← Volver a trabajos</a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
+        <span style="background:#2F7D63; color:#fff; font-weight:700; font-size:12.5px; letter-spacing:0.04em; padding:6px 13px; border-radius:100px; box-shadow:0 6px 16px rgba(47,125,99,0.3);">{{ category }}</span>
+        <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.24); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#EAEFEC; font-weight:700; font-size:12.5px; letter-spacing:0.04em; padding:6px 13px; border-radius:100px;">{{ client }}</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4.4vw,56px); line-height:1.05; letter-spacing:-0.025em; margin:0; color:#fff; max-width:880px; text-wrap:balance;">{{ title }}</h1>
+    </div>
+  </section>
+
+  <section style="background:transparent; padding:80px 6vw;">
+    <div class="esim-detail" style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr; gap:56px; align-items:start;">
+      <div>
+        <p style="font-size:13px; font-weight:700; letter-spacing:0.1em; color:#2F7D63; margin:0 0 16px;">RESUMEN DEL TRABAJO</p>
+        <sc-for list="{{ paras }}" as="p" hint-placeholder-count="2">
+          <p style="font-size:18px; line-height:1.7; color:#454F48; margin:0 0 18px; text-wrap:pretty;">{{ p }}</p>
+        </sc-for>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:21px; margin:34px 0 18px; color:#18231F;">Alcance del servicio</h3>
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <sc-for list="{{ scope }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <span style="width:22px; height:22px; border-radius:6px; background:#2F7D63; flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-top:1px; box-shadow:0 4px 10px rgba(47,125,99,0.28);"><span style="width:8px; height:5px; border-left:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(-45deg) translate(1px,-1px); display:block;"></span></span>
+              <span style="font-size:16px; color:#2C362F; font-weight:500;">{{ s }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="esim-ficha" style="background:#fff; border:1px solid var(--line); border-radius:20px; padding:30px; position:sticky; top:90px; box-shadow:0 20px 50px rgba(20,40,30,0.07);">
+        <div style="font-size:12.5px; font-weight:700; letter-spacing:0.1em; color:#9AA29B; margin-bottom:20px;">FICHA TÉCNICA</div>
+        <div style="display:flex; flex-direction:column; gap:0;">
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--line);">
+            <span style="font-size:14.5px; color:#7E867F; font-weight:600;">Cliente</span>
+            <span style="font-size:14.5px; color:#18231F; font-weight:700; text-align:right;">{{ client }}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--line);">
+            <span style="font-size:14.5px; color:#7E867F; font-weight:600;">Servicio</span>
+            <span style="font-size:14.5px; color:#18231F; font-weight:700; text-align:right;">{{ category }}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--line);">
+            <span style="font-size:14.5px; color:#7E867F; font-weight:600;">Ubicación</span>
+            <span style="font-size:14.5px; color:#18231F; font-weight:700; text-align:right;">{{ location }}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0;">
+            <span style="font-size:14.5px; color:#7E867F; font-weight:600;">Año</span>
+            <span style="font-size:14.5px; color:#18231F; font-weight:700; text-align:right;">{{ year }}</span>
+          </div>
+        </div>
+        <a href="index.html#contacto" style="display:block; text-align:center; margin-top:22px; background:#2F7D63; color:#fff; text-decoration:none; font-weight:700; font-size:15px; padding:14px; border-radius:11px; box-shadow:0 10px 26px rgba(47,125,99,0.3); transition:background .2s, transform .2s;" style-hover="background:#25634F; transform:translateY(-2px);">Consultar un trabajo similar</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface); border-top:1px solid var(--line); padding:60px 6vw 90px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.1em; color:#2F7D63; margin:0 0 24px;">GALERÍA DEL PROYECTO</p>
+      <div class="esim-gallery" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <sc-for list="{{ images }}" as="img" hint-placeholder-count="6">
+          <div onClick="{{ img.open }}" style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; cursor:zoom-in; background:#EDF1EF; border:1px solid var(--line); box-shadow:0 10px 28px rgba(20,40,30,0.06); transition:transform .25s, box-shadow .25s, border-color .25s;" style-hover="box-shadow:0 18px 40px rgba(20,40,30,0.14); transform:translateY(-3px); border-color:rgba(47,125,99,0.5);">
+            {{ img.el }}
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:transparent; padding:48px 6vw 90px;">
+    <div class="esim-prevnext" style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <a href="{{ prevHref }}" style="display:flex; flex-direction:column; gap:6px; background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 28px; text-decoration:none; box-shadow:0 10px 28px rgba(20,40,30,0.05); transition:border-color .2s, transform .2s, box-shadow .2s;" style-hover="border-color:rgba(47,125,99,0.5); transform:translateY(-2px); box-shadow:0 16px 36px rgba(20,40,30,0.1);">
+        <span style="font-size:13px; font-weight:700; color:#9AA29B; letter-spacing:0.04em;">← TRABAJO ANTERIOR</span>
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; color:#18231F;">{{ prevTitle }}</span>
+      </a>
+      <a href="{{ nextHref }}" style="display:flex; flex-direction:column; gap:6px; align-items:flex-end; text-align:right; background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 28px; text-decoration:none; box-shadow:0 10px 28px rgba(20,40,30,0.05); transition:border-color .2s, transform .2s, box-shadow .2s;" style-hover="border-color:rgba(47,125,99,0.5); transform:translateY(-2px); box-shadow:0 16px 36px rgba(20,40,30,0.1);">
+        <span style="font-size:13px; font-weight:700; color:#9AA29B; letter-spacing:0.04em;">TRABAJO SIGUIENTE →</span>
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; color:#18231F;">{{ nextTitle }}</span>
+      </a>
+    </div>
+  </section>
+
+  <footer style="background:#15211C; padding:54px 6vw 38px; color:#fff;">
+    <div style="max-width:1240px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <span style="display:inline-flex; background:#fff; border-radius:12px; padding:9px 13px;"><img src="images/logo-esim.png" alt="ESIM SRL" style="height:30px; width:auto; display:block;"></span>
+      <span style="font-size:14px; color:#6F7C74;">© {{ year2 }} ESIM SRL · Servicios industriales para Oil &amp; Gas</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" style="position:fixed; inset:0; z-index:200; background:rgba(10,16,13,0.92); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:5vh 5vw; cursor:zoom-out;">
+      {{ lightboxEl }}
+      <span style="position:fixed; top:24px; right:30px; color:#fff; font-size:34px; font-weight:300; line-height:1; cursor:pointer;">×</span>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxImg: null };
+
+  PROJECTS = {
+    ductos: {
+      title: "Acondicionamiento de ductos",
+      category: "Logística & Obra",
+      client: "YPF · Poliductos",
+      location: "Patagonia",
+      year: "2024",
+      paras: [
+        "Intervención integral de cañerías y poliductos en obra: desde la apertura de zanja hasta la puesta en servicio. Trabajo nocturno y diurno con logística de equipos y personal especializado.",
+        "La soldadura se ejecuta bajo carpa para control de condiciones, con ensayos no destructivos y revestimiento de protección antes de la bajada y tapada de la línea."
+      ],
+      scope: ["Excavación y preparación de zanja", "Soldadura y ensayos no destructivos (END)", "Revestimiento y protección anticorrosiva", "Bajada, tapada y puesta en servicio"],
+      imgs: ["images/hero.jpg","images/p/ductos-1.jpg","images/p/ductos-2.jpg","images/p/ductos-3.jpg","images/p/ductos-4.jpg","images/p/ductos-5.jpg","images/p/ductos-6.jpg"]
+    },
+    hidrogrua: {
+      title: "Logística e izaje con hidrogrúa",
+      category: "Logística pesada",
+      client: "Clientes varios",
+      location: "Cuyo y Patagonia",
+      year: "2024",
+      paras: [
+        "Servicio de transporte, carga y descarga de equipos pesados con camiones hidrogrúa y personal habilitado, en yacimiento y en planta.",
+        "Planificamos cada maniobra de izaje considerando peso, radio y condiciones del terreno para garantizar una operación segura y sin daños al equipo."
+      ],
+      scope: ["Transporte de equipos y estructuras", "Maniobras de izaje con hidrogrúa", "Carga y descarga en obra", "Personal y equipos habilitados"],
+      imgs: ["images/p/hidrogrua-1.jpg","images/p/hidrogrua-2.jpg","images/p/hidrogrua-3.jpg","images/p/hidrogrua-4.jpg","images/p/hidrogrua-5.jpg"]
+    },
+    bomba: {
+      title: "Reparación de bomba B8 — YPF Poliducto",
+      category: "Equipos rotativos",
+      client: "YPF Poliducto",
+      location: "Argentina",
+      year: "2024",
+      paras: [
+        "Desarme, inspección dimensional, ajuste y montaje de bomba B8 de poliducto. Diagnóstico de componentes y reemplazo de partes según especificación.",
+        "El trabajo se completó cumpliendo tolerancias de precisión y protocolos de prueba para devolver el equipo a operación en el menor tiempo posible."
+      ],
+      scope: ["Desarme e inspección dimensional", "Mecanizado y ajuste de componentes", "Reemplazo de partes y sellos", "Montaje, alineación y pruebas"],
+      imgs: ["images/p/bomba-1.jpg","images/p/bomba-2.jpg","images/p/bomba-3.jpg","images/p/bomba-4.jpg"]
+    },
+    compresor: {
+      title: "Mantenimiento de compresor — Air Liquide",
+      category: "Equipos rotativos",
+      client: "Air Liquide",
+      location: "Planta industrial",
+      year: "2024",
+      paras: [
+        "Intervención de mantenimiento sobre compresor en planta, con trabajo en altura y sobre el equipo bajo procedimientos de seguridad.",
+        "Inspección, ajuste y verificación de componentes para asegurar la continuidad operativa del sistema de compresión."
+      ],
+      scope: ["Inspección y diagnóstico en planta", "Ajuste de componentes", "Trabajo en altura bajo procedimiento", "Verificación y puesta en marcha"],
+      imgs: ["images/p/compresor-1.jpg","images/p/compresor-2.jpg"]
+    },
+    motor: {
+      title: "Reparación de motor Cooper Superior",
+      category: "Equipos rotativos",
+      client: "Yacimiento Malargüe",
+      location: "Malargüe, Mendoza",
+      year: "2024",
+      paras: [
+        "Reparación de motor Cooper Superior en taller: desarme de camisas y pistones, inspección de componentes y armado de precisión.",
+        "Cada pieza se verifica y se ajusta para devolver el motor a sus condiciones de operación, con control de tolerancias en todo el proceso."
+      ],
+      scope: ["Desarme de camisas y pistones", "Inspección de componentes", "Mecanizado y ajuste", "Armado de precisión y prueba"],
+      imgs: ["images/p/motor-1.jpg","images/p/motor-2.jpg","images/p/motor-3.jpg","images/p/motor-4.jpg","images/p/motor-5.jpg"]
+    },
+    td: {
+      title: "Oficina técnica: modelado 3D y repuestos",
+      category: "Ingeniería",
+      client: "Clientes varios",
+      location: "Taller ESIM",
+      year: "2023–2024",
+      paras: [
+        "Relevamiento de piezas y modelado 3D para la fabricación de repuestos a medida cuando el original ya no se consigue en el mercado.",
+        "Combinamos ingeniería inversa, diseño asistido y fabricación para entregar repuestos compatibles y listos para montar."
+      ],
+      scope: ["Relevamiento e ingeniería inversa", "Modelado 3D y planos", "Fabricación de repuestos a medida", "Control de calidad dimensional"],
+      imgs: ["images/p/td-1.jpg","images/p/td-2.jpg","images/p/td-3.jpg","images/p/td-4.jpg","images/p/td-5.jpg","images/p/td-6.jpg"]
+    }
+  };
+  ORDER = ["ductos","hidrogrua","bomba","compresor","motor","td"];
+
+  getSlug() {
+    try {
+      const sp = new URLSearchParams(window.location.search);
+      const p = sp.get("p");
+      if (p && this.PROJECTS[p]) return p;
+    } catch (e) {}
+    return "ductos";
+  }
+
+  renderVals() {
+    const slug = this.getSlug();
+    const proj = this.PROJECTS[slug];
+    const idx = this.ORDER.indexOf(slug);
+    const prevSlug = this.ORDER[(idx - 1 + this.ORDER.length) % this.ORDER.length];
+    const nextSlug = this.ORDER[(idx + 1) % this.ORDER.length];
+    const images = proj.imgs.map((src) => ({
+      open: () => this.setState({ lightboxImg: src }),
+      el: React.createElement("img", {
+        src,
+        alt: proj.title,
+        style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" },
+      }),
+    }));
+    const heroImgEl = React.createElement("img", {
+      src: proj.imgs[0],
+      alt: proj.title,
+      style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 45%" },
+    });
+    const lightboxEl = this.state.lightboxImg
+      ? React.createElement("img", {
+          src: this.state.lightboxImg,
+          alt: "",
+          style: { maxWidth: "100%", maxHeight: "100%", objectFit: "contain", borderRadius: "10px", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" },
+        })
+      : null;
+    return {
+      title: proj.title,
+      category: proj.category,
+      client: proj.client,
+      location: proj.location,
+      year: proj.year,
+      year2: new Date().getFullYear(),
+      paras: proj.paras,
+      scope: proj.scope,
+      heroImgEl,
+      images,
+      prevHref: "Trabajo.dc.html?p=" + prevSlug,
+      nextHref: "Trabajo.dc.html?p=" + nextSlug,
+      prevTitle: this.PROJECTS[prevSlug].title,
+      nextTitle: this.PROJECTS[nextSlug].title,
+      lightboxOpen: !!this.state.lightboxImg,
+      lightboxEl,
+      closeLightbox: () => this.setState({ lightboxImg: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -4,6 +4,9 @@
 - **esimsrl.com.ar** es una web básica, con poca presencia visual y sin área privada.
 - ESIM tiene más de 30 años de trayectoria (desde 1993), más de 200 personas y clientes como YPF y Air Liquide. También cuenta con un archivo de fotos muy bueno (ductos, izaje, taller, repuestos y modelos 3D), pero hoy no lo aprovecha.
 
+## Diseño original (F:\pages)
+Ya existía una versión de una sola página, hecha en Claude Design, que se sirve con `Panel ESIM.bat` (Python `http.server`, puerto 50300). Tiene el logo oficial, la paleta verde `#2F7D63`, los datos reales de contacto, cifras, testimonios y el asistente "Andrea", que toma los datos de la persona y los envía por WhatsApp al gerente. La web nueva **mantiene ese diseño y ese contenido** y los reparte en varias páginas. El original quedó guardado en `diseno-original/`.
+
 ## Referencia: tangoenergia.com
 Web institucional de una petrolera, con:
 - Portada con una foto a pantalla completa y un mensaje fuerte.
@@ -26,7 +29,9 @@ Web institucional de una petrolera, con:
 | **Socio / gerencia** | Panel de indicadores (facturación, obras en curso, horas trabajadas, indicadores de seguridad), documentos societarios |
 | **Administrador** | Alta y baja de usuarios, permisos, carga de documentos y de indicadores |
 
-Tecnología sugerida: login con Auth.js o Supabase Auth, base de datos Postgres, archivos en almacenamiento seguro y rutas protegidas según el rol. Se construye sobre el mismo proyecto, sin rehacer la web.
+**Punto de partida existente:** el sistema interno `esim-partes-digitales` (Node.js + Express) ya tiene login, roles (`maestro`, `admin`, `operario`, `cliente`, `taller`) y una matriz de permisos por pantalla (dashboard, OT, partes, pedidos). El área privada puede **enlazar a ese sistema** o reutilizar su base de usuarios, en lugar de crear otra desde cero.
+
+Si se hace aparte: login con Auth.js o Supabase Auth, base de datos Postgres, archivos en almacenamiento seguro y rutas protegidas según el rol. Se construye sobre el mismo proyecto, sin rehacer la web.
 
 ### Fase 3 (opcional)
 - Portal de clientes: estado de órdenes de trabajo, informes técnicos y certificados.
