@@ -4,19 +4,71 @@
   --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
 
-  /* Paleta del diseño original de ESIM (diseno-original/index.html) */
-  --color-ink-950: #0f1814;
-  --color-ink-900: #15211c;
-  --color-ink-800: #18231f;
-  --color-ink-700: #2a3a33;
+  /* Noche industrial: fondos oscuros verdosos */
+  --color-night-950: #060b09;
+  --color-night-900: #0b1411;
+  --color-night-800: #111d18;
+  --color-night-700: #1b2b24;
+  --color-night-600: #2a3d34;
+
+  /* Verde ESIM (del logo) */
+  --color-brand-700: #1c5540;
   --color-brand-600: #25634f;
   --color-brand-500: #2f7d63;
-  --color-brand-400: #3fae63;
-  --color-brand-50: #e8f2ed;
+  --color-brand-400: #3fa37a;
+  --color-brand-300: #7fd1a3;
+  --color-brand-100: #dcefe5;
+  --color-brand-50: #eef6f1;
+
+  /* Rojo del logo, uso puntual */
+  --color-signal-500: #e5202e;
+
+  /* Neutros cálidos */
+  --color-paper: #f4f5f1;
+  --color-line: #e2e6e1;
+  --color-muted: #6f7a73;
+  --color-ink: #121a16;
+
+  /* Compatibilidad con clases previas */
+  --color-ink-950: #060b09;
+  --color-ink-900: #0b1411;
+  --color-ink-800: #121a16;
+  --color-ink-700: #2a3d34;
   --color-accent-400: #7fd1a3;
-  --color-steel-50: #f4f6f5;
-  --color-steel-100: #e6eae7;
-  --color-steel-500: #7e867f;
+  --color-steel-50: #f4f5f1;
+  --color-steel-100: #e2e6e1;
+  --color-steel-500: #6f7a73;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-kenburns: kenburns 12s ease-out forwards;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes kenburns {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 html {
@@ -25,9 +77,10 @@ html {
 
 body {
   background: #ffffff;
-  color: var(--color-ink-800);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -35,36 +88,115 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
-/* Palabra destacada en títulos: "Servicios <em>que ofrecemos</em>" */
+::selection {
+  background: var(--color-brand-300);
+  color: var(--color-night-900);
+}
+
+/* Palabra destacada en títulos */
 h1 em,
 h2 em {
-  font-style: italic;
+  font-style: normal;
   color: var(--color-brand-500);
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 88rem;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  &::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
+}
+
+/* Textura sutil de grano sobre fondos oscuros */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 }
 
 /* Animación de aparición al hacer scroll (ver components/Reveal.tsx) */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(32px);
   transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
 
+/* Imagen que se "descubre" al entrar en pantalla */
+.reveal-img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.reveal.is-visible .reveal-img,
+.reveal-img.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Barras que crecen al entrar en pantalla */
+.reveal .bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
+}
+.reveal.is-visible .bar {
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal .bar {
+    transform: none;
+  }
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .reveal-img {
     opacity: 1;
     transform: none;
+    clip-path: none;
     transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

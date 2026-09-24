@@ -2,7 +2,7 @@
 
 Nueva web institucional de **ESIM S.R.L.** (Empresa de Servicios Industriales Mecánicos), hecha con Next.js 15, React 19, TypeScript y Tailwind CSS 4.
 
-El diseño (logo, paleta verde, tipografías Space Grotesk + Manrope, textos, cifras, testimonios y el asistente "Andrea") sale de la versión original de una sola página que estaba en `F:\pages\github`. Esa versión quedó guardada tal cual en [`diseno-original/`](diseno-original/).
+Diseño "noche industrial": hero con slideshow cinematográfico, explorador de servicios interactivo, carrusel de proyectos y animaciones al hacer scroll. Conserva la identidad (logo, verde ESIM, Space Grotesk + Manrope), los textos, las cifras y el asistente "Andrea" de la versión original de una sola página que estaba en `F:\pages\github`. Esa versión quedó guardada tal cual en [`diseno-original/`](diseno-original/).
 
 ## Correr en local
 

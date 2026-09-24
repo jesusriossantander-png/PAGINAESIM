@@ -19,28 +19,35 @@ export default function TrabajaPage() {
   return (
     <>
       <PageHeader
-        title="Trabajá con nosotros"
-        subtitle="Sumate a un equipo con más de 30 años de oficio en la industria."
+        eyebrow="Trabajá con nosotros"
+        title={
+          <>
+            Sumate a un equipo <span className="text-brand-300">con oficio.</span>
+          </>
+        }
+        subtitle="Más de 30 años formando personas en la industria energética de Cuyo y Patagonia."
         image="/img/ductos/ductos-02.webp"
       />
-      <section className="py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2">
+      <section className="py-20 md:py-28">
+        <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <h2 className="text-3xl font-extrabold">Perfiles que buscamos</h2>
-            <p className="mt-4 text-lg text-steel-500">
+            <p className="eyebrow text-brand-500">Perfiles</p>
+            <h2 className="mt-5 text-4xl font-semibold md:text-5xl">Lo que <em>buscamos.</em></h2>
+            <p className="mt-6 text-lg text-muted">
               Valoramos la experiencia, las ganas de aprender y, sobre todo, el compromiso con la seguridad.
             </p>
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-10 border-t border-line">
               {perfiles.map((p) => (
-                <li key={p} className="rounded-xl bg-steel-50 px-5 py-4 font-medium text-ink-800">
+                <li key={p} className="flex items-center justify-between border-b border-line py-5 font-display text-xl font-medium">
                   {p}
+                  <span className="text-brand-500">→</span>
                 </li>
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={120} className="rounded-2xl border border-steel-100 p-6 shadow-sm sm:p-10">
-            <h2 className="mb-2 text-2xl font-extrabold">Envianos tus datos</h2>
-            <p className="mb-6 text-sm text-steel-500">Adjuntá tu CV al correo que se abrirá al enviar.</p>
+          <Reveal delay={120} className="rounded-[28px] bg-paper p-6 sm:p-10 md:p-12">
+            <h2 className="mb-2 text-3xl font-semibold">Envianos tus datos</h2>
+            <p className="mb-8 text-muted">Adjuntá tu CV al correo que se abrirá al enviar.</p>
             <ContactForm to={site.email} subjectPrefix="Postulación laboral" />
           </Reveal>
         </div>

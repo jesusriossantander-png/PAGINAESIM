@@ -45,22 +45,22 @@ export default function Gallery() {
               role="tab"
               aria-selected={active}
               onClick={() => setFilter(c.id)}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                active ? "bg-ink-900 text-white" : "bg-steel-100 text-ink-800 hover:bg-steel-50 hover:ring-1 hover:ring-ink-700"
+              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+                active ? "bg-night-900 text-white" : "border border-line bg-white text-ink hover:border-brand-500 hover:text-brand-500"
               }`}
             >
-              {c.label} <span className={active ? "text-accent-400" : "text-steel-500"}>{count}</span>
+              {c.label} <span className={active ? "text-brand-300" : "text-muted"}>{count}</span>
             </button>
           );
         })}
       </div>
 
-      <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3">
+      <div className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3">
         {items.map((o, i) => (
           <button
             key={o.src}
             onClick={() => setIndex(i)}
-            className="group relative mb-4 block w-full overflow-hidden rounded-xl break-inside-avoid bg-steel-100"
+            className="group relative mb-5 block w-full overflow-hidden rounded-2xl break-inside-avoid bg-paper"
             aria-label={`Ampliar: ${caption(o)}`}
           >
             <Image
@@ -80,7 +80,7 @@ export default function Gallery() {
 
       {current && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-ink-950/95 p-4"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-night-950/95 p-4 backdrop-blur"
           role="dialog"
           aria-modal="true"
           aria-label={caption(current)}

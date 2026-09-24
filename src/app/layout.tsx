@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es-AR">
       <head>
         <noscript>
-          <style>{`.reveal{opacity:1;transform:none}`}</style>
+          <style>{`.reveal{opacity:1;transform:none}.reveal-img{clip-path:none}.reveal .bar{transform:none}`}</style>
         </noscript>
       </head>
       <body className="flex min-h-screen flex-col">

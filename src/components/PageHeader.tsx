@@ -1,15 +1,38 @@
 import Image from "next/image";
+import Link from "next/link";
 
-// Cabecera con foto para las páginas internas
-export default function PageHeader({ title, subtitle, image }: { title: string; subtitle?: string; image: string }) {
+// Cabecera editorial para páginas internas
+export default function PageHeader({
+  eyebrow,
+  title,
+  subtitle,
+  image,
+}: {
+  eyebrow?: string;
+  title: React.ReactNode;
+  subtitle?: string;
+  image: string;
+}) {
   return (
-    <section className="relative flex min-h-[380px] items-end overflow-hidden bg-ink-900 pt-20">
-      <Image src={image} alt="" fill priority sizes="100vw" className="object-cover opacity-45" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-900/40 to-transparent" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-14 sm:px-6">
-        <div className="mb-4 h-1 w-16 bg-accent-400" />
-        <h1 className="text-4xl font-extrabold text-white md:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-lg text-white/80">{subtitle}</p>}
+    <section className="grain relative flex min-h-[72svh] items-end overflow-hidden bg-night-950 text-white">
+      <Image src={image} alt="" fill priority sizes="100vw" className="animate-kenburns object-cover opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-night-950/30" />
+      <div className="container-x relative pt-36 pb-14 md:pb-20">
+        <nav aria-label="Ruta" className="animate-fade-up mb-8 flex items-center gap-2 text-sm text-white/55">
+          <Link href="/" className="hover:text-white">
+            Inicio
+          </Link>
+          <span>/</span>
+          <span className="text-white/85">{eyebrow}</span>
+        </nav>
+        <h1 className="animate-fade-up max-w-5xl text-5xl leading-[0.95] font-semibold md:text-7xl lg:text-8xl" style={{ animationDelay: "100ms" }}>
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="animate-fade-up mt-8 max-w-2xl text-lg text-white/70 md:text-xl" style={{ animationDelay: "200ms" }}>
+            {subtitle}
+          </p>
+        )}
       </div>
     </section>
   );

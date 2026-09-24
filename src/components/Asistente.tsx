@@ -53,11 +53,13 @@ export default function Asistente() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Se abre sola a los 5 segundos, salvo que el visitante ya la haya cerrado
+  // A los 6 segundos muestra un aviso breve junto al botón (sin tapar la página)
+  const [teaser, setTeaser] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setOpen((o) => (dismissed ? o : true)), 5000);
+    if (dismissed || open) return;
+    const t = setTimeout(() => setTeaser(true), 6000);
     return () => clearTimeout(t);
-  }, [dismissed]);
+  }, [dismissed, open]);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -161,7 +163,7 @@ export default function Asistente() {
                   className={`max-w-[85%] px-3.5 py-2.5 text-[13px] leading-relaxed ${
                     m.from === "user"
                       ? "rounded-2xl rounded-br-sm bg-brand-500 text-white"
-                      : "rounded-2xl rounded-bl-sm bg-steel-50 text-ink-800"
+                      : "rounded-2xl rounded-bl-sm bg-paper text-ink"
                   }`}
                 >
                   {m.text}
@@ -209,6 +211,17 @@ export default function Asistente() {
         </div>
       )}
 
+      {teaser && !open && !dismissed && (
+        <div className="animate-fade-up fixed right-24 bottom-6 z-[55] flex max-w-[16rem] items-start gap-2 rounded-2xl rounded-br-sm bg-white py-3 pr-3 pl-4 text-sm shadow-2xl ring-1 ring-black/5">
+          <button className="text-left" onClick={() => setOpen(true)}>
+            <span className="block font-bold text-ink">¡Hola! Soy Andrea 👋</span>
+            <span className="text-muted">¿Te ayudo con una cotización?</span>
+          </button>
+          <button onClick={() => setDismissed(true)} aria-label="Cerrar aviso" className="text-muted hover:text-ink">
+            ×
+          </button>
+        </div>
+      )}
       <button
         onClick={() => (open ? close() : setOpen(true))}
         aria-label={open ? "Cerrar asistente" : "Abrir asistente virtual"}

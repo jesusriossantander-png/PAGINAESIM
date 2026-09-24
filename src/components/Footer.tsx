@@ -5,82 +5,102 @@ import { servicios } from "@/data/servicios";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink-900 text-white/70">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <span className="inline-block rounded-xl bg-white px-3 py-2">
-            <Logo className="h-9 w-auto" />
-          </span>
-          <p className="mt-4 text-sm leading-relaxed">
-            {site.legalName}. Servicios industriales para Oil &amp; Gas: ductos, equipos rotativos, hidrogrúa y oficina técnica. Cuyo y Patagonia.
-          </p>
-        </div>
-        <div>
-          <h3 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">Navegación</h3>
-          <ul className="space-y-2 text-sm">
-            {[...nav, { href: "/trabaja-con-nosotros", label: "Trabajá con nosotros" }].map((n) => (
+    <footer className="grain relative overflow-hidden bg-night-950 text-white/65">
+      <div className="container-x relative pt-20 md:pt-28">
+        <div className="grid gap-12 border-b border-white/10 pb-16 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+          <div>
+            <Logo light className="h-11 w-auto" />
+            <p className="mt-6 max-w-xs leading-relaxed">
+              Servicios industriales para Oil &amp; Gas: ductos, equipos rotativos, hidrogrúa y oficina técnica. Cuyo y
+              Patagonia, desde {site.foundedYear}.
+            </p>
+            <a
+              href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hola, quiero hacer una consulta a ESIM SRL.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-500"
+            >
+              <WhatsIcon /> Escribinos por WhatsApp
+            </a>
+          </div>
+          <FooterCol title="Empresa">
+            {[...nav, { href: "/trabaja-con-nosotros", label: "Trabajá con nosotros" }, { href: "/acceso", label: "Portal socios" }].map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="hover:text-white">
+                <Link href={n.href} className="transition hover:text-white">
                   {n.label}
                 </Link>
               </li>
             ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">Servicios</h3>
-          <ul className="space-y-2 text-sm">
+          </FooterCol>
+          <FooterCol title="Servicios">
             {servicios.map((s) => (
               <li key={s.slug}>
-                <Link href={`/servicios#${s.slug}`} className="hover:text-white">
+                <Link href={`/servicios#${s.slug}`} className="transition hover:text-white">
                   {s.title}
                 </Link>
               </li>
             ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">Contacto</h3>
-          <ul className="space-y-2 text-sm">
+          </FooterCol>
+          <FooterCol title="Contacto">
             <li>
-              {site.address}
-              <br />
-              {site.city}
-            </li>
-            <li>
-              <a href={site.phoneHref} className="hover:text-white">
+              <a href={site.phoneHref} className="font-display text-xl text-white transition hover:text-brand-300">
                 {site.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="hover:text-white">
+              <a href={`mailto:${site.email}`} className="transition hover:text-white">
                 {site.email}
               </a>
             </li>
             <li>
-              <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                Ver en Google Maps
+              {site.address}, Perdriel
+              <br />
+              Luján de Cuyo, Mendoza
+            </li>
+            <li className="flex gap-4 pt-2">
+              <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-300 hover:text-white">
+                Google Maps ↗
+              </a>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-300 hover:text-white">
+                LinkedIn ↗
               </a>
             </li>
-            <li>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                LinkedIn
-              </a>
-            </li>
-          </ul>
+          </FooterCol>
         </div>
+
+        {/* Marca gigante */}
+        <p
+          aria-hidden="true"
+          className="pointer-events-none -mb-[0.2em] pt-10 text-center font-display text-[24vw] leading-none font-semibold tracking-tighter text-white/[0.04] select-none"
+        >
+          ESIM
+        </p>
       </div>
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs sm:flex-row sm:px-6">
+      <div className="relative border-t border-white/10">
+        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
+            © {new Date().getFullYear()} {site.legalName}
           </p>
-          <span className="text-white/50">Seguridad · Calidad · Compromiso</span>
-          <Link href="/acceso" className="hover:text-white">
-            Acceso socios / empleados
-          </Link>
+          <p className="text-white/40">Seguridad · Calidad · Compromiso</p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h3 className="mb-5 text-xs font-bold tracking-[0.2em] text-white uppercase">{title}</h3>
+      <ul className="space-y-3 text-[15px]">{children}</ul>
+    </div>
+  );
+}
+
+function WhatsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z" />
+    </svg>
   );
 }

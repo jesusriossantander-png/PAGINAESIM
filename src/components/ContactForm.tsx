@@ -25,7 +25,7 @@ export default function ContactForm({ to, subjectPrefix }: { to: string; subject
   }
 
   const input =
-    "w-full rounded-lg border border-steel-100 bg-steel-50 px-4 py-3 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-500/20";
+    "w-full rounded-xl border border-line bg-white px-4 py-3.5 font-normal outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15";
 
   return (
     <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
@@ -52,7 +52,7 @@ export default function ContactForm({ to, subjectPrefix }: { to: string; subject
       <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
         <button
           type="submit"
-          className="rounded-lg bg-brand-500 px-8 py-3.5 font-semibold text-white transition hover:bg-brand-600"
+          className="rounded-full bg-brand-500 px-8 py-4 font-bold text-white transition hover:bg-brand-600"
         >
           Enviar consulta
         </button>

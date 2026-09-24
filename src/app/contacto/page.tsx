@@ -1,76 +1,76 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = { title: "Contacto" };
 
 export default function ContactoPage() {
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
+  const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hola, quiero hacer una consulta a ESIM SRL.")}`;
+  const canales = [
+    { t: "Teléfono", v: site.phone, href: site.phoneHref },
+    { t: "WhatsApp", v: "Escribinos ahora", href: wa, ext: true },
+    { t: "Email", v: site.email, href: `mailto:${site.email}` },
+    { t: "Ubicación", v: "Perdriel, Luján de Cuyo", href: site.mapsUrl, ext: true },
+  ];
+
   return (
     <>
       <PageHeader
-        title="Contacto"
-        subtitle="Contanos qué necesitás: te respondemos a la brevedad."
+        eyebrow="Contacto"
+        title={
+          <>
+            Contanos qué <span className="text-brand-300">necesitás resolver.</span>
+          </>
+        }
+        subtitle="Te respondemos con una propuesta técnica y un presupuesto a medida."
         image="/img/ajuste/bomba-b8-ypf-poliducto-03.webp"
       />
-      <section className="py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.4fr]">
-          <div className="space-y-6">
-            <InfoCard title="Ubicación">
-              {site.address}
-              <br />
-              {site.city}
-              <br />
-              <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-base font-semibold text-brand-500">
-                Ver en Google Maps →
-              </a>
-            </InfoCard>
-            <InfoCard title="Teléfono">
-              <a href={site.phoneHref} className="hover:text-brand-600">
-                {site.phone}
-              </a>
-            </InfoCard>
-            <InfoCard title="Email">
-              <a href={`mailto:${site.email}`} className="hover:text-brand-600">
-                {site.email}
-              </a>
-            </InfoCard>
-            {site.whatsapp && (
-              <a
-                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hola, quiero hacer una consulta a ESIM SRL.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex rounded-lg bg-[#25D366] px-6 py-3 font-semibold text-white"
-              >
-                Escribinos por WhatsApp
-              </a>
-            )}
-          </div>
-          <div className="rounded-2xl border border-steel-100 p-6 shadow-sm sm:p-10">
-            <h2 className="mb-6 text-2xl font-extrabold">Solicitá una cotización</h2>
+
+      <section className="py-20 md:py-28">
+        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+          <Reveal>
+            <p className="eyebrow text-brand-500">Canales directos</p>
+            <div className="mt-8 border-t border-line">
+              {canales.map((c) => (
+                <a
+                  key={c.t}
+                  href={c.href}
+                  target={c.ext ? "_blank" : undefined}
+                  rel={c.ext ? "noopener noreferrer" : undefined}
+                  className="group flex items-center justify-between gap-6 border-b border-line py-6"
+                >
+                  <span>
+                    <span className="block text-sm font-semibold text-muted">{c.t}</span>
+                    <span className="mt-1 block font-display text-xl font-semibold transition group-hover:text-brand-500 md:text-2xl">
+                      {c.v}
+                    </span>
+                  </span>
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line transition group-hover:border-brand-500 group-hover:bg-brand-500 group-hover:text-white">
+                    ↗
+                  </span>
+                </a>
+              ))}
+            </div>
+            <p className="mt-8 text-sm text-muted">
+              Atención comercial: {site.manager}, gerencia. {site.address}, {site.city}.
+            </p>
+          </Reveal>
+          <Reveal delay={120} className="rounded-[28px] bg-paper p-6 sm:p-10 md:p-12">
+            <h2 className="text-3xl font-semibold">Solicitá una cotización</h2>
+            <p className="mt-2 mb-8 text-muted">Completá el formulario y te contactamos a la brevedad.</p>
             <ContactForm to={site.email} subjectPrefix="Consulta web" />
-          </div>
+          </Reveal>
         </div>
       </section>
-      <section className="h-[420px] bg-steel-100">
-        <iframe
-          title="Ubicación de ESIM"
-          src={mapSrc}
-          className="h-full w-full border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+
+      <section className="px-3 pb-3 sm:px-5 sm:pb-5">
+        <div className="h-[460px] overflow-hidden rounded-[32px] bg-paper">
+          <iframe title="Ubicación de ESIM" src={mapSrc} className="h-full w-full border-0 grayscale-[40%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+        </div>
       </section>
     </>
-  );
-}
-
-function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl bg-steel-50 p-6">
-      <p className="text-sm font-bold tracking-[0.2em] text-brand-500 uppercase">{title}</p>
-      <p className="mt-2 text-lg text-ink-800">{children}</p>
-    </div>
   );
 }
