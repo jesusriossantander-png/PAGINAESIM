@@ -4,7 +4,20 @@ Nueva web institucional de **ESIM S.R.L.** (Empresa de Servicios Industriales Me
 
 Diseño "noche industrial": hero con slideshow cinematográfico, explorador de servicios interactivo, carrusel de proyectos y animaciones al hacer scroll. Conserva la identidad (logo, verde ESIM, Space Grotesk + Manrope), los textos, las cifras y el asistente "Andrea" de la versión original de una sola página que estaba en `F:\pages\github`. Esa versión quedó guardada tal cual en [`diseno-original/`](diseno-original/).
 
-## Correr en local
+## Verla en tu PC (doble clic)
+
+1. Traé la última versión de la rama: `git pull`.
+2. Doble clic en **`Iniciar Web ESIM.bat`**. En otros sistemas: `npm run local`.
+
+La primera vez instala las dependencias y prepara la web, lo que tarda un par de minutos. Después:
+
+- **Elige solo un puerto libre**, del 3100 en adelante. Nunca usa los que ya ocupan otros sistemas de ESIM: el **3000** (sistema de partes digitales) y el **50300** (la web anterior). Tampoco usa 3001, 5173 ni 8080.
+- **Abre el navegador** y muestra dos direcciones: la de esta PC (`http://localhost:31xx`) y la de la oficina (`http://192.168.0.xxx:31xx`), para verla desde otra PC de la red.
+- **Para detenerla**, cerrá la ventana o presioná Ctrl+C.
+
+Opciones: `Iniciar Web ESIM.bat --port 3200` pide un puerto puntual (si está ocupado, busca otro), `--build` fuerza a regenerar la web y `--no-open` no abre el navegador. Si cambió algo del código (por ejemplo, después de un `git pull`), la web se regenera sola.
+
+## Correr en local (desarrollo)
 
 Requisitos: Node.js 20 o superior.
 
