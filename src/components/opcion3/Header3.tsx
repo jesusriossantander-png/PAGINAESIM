@@ -9,7 +9,7 @@ const links = [
   ["#servicios", "Servicios"],
   ["#nosotros", "Nosotros"],
   ["#proyectos", "Proyectos"],
-  ["#por-que", "Por qué ESIM"],
+  ["#bases", "Bases"],
   ["#contacto", "Contacto"],
 ];
 
@@ -24,7 +24,7 @@ export default function Header3() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${scroll || open ? "bg-indi-950/90 backdrop-blur-md" : "bg-transparent"}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${scroll || open ? "bg-petro-950/90 backdrop-blur-md" : "bg-transparent"}`}>
       <div className="mx-auto flex h-20 max-w-[82rem] items-center justify-between gap-6 px-6 xl:px-12">
         <a href="#inicio" aria-label="ESIM – Inicio">
           <Logo className="h-11 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]" />

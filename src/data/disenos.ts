@@ -20,7 +20,7 @@ export const disenos: Diseno[] = [
     id: 3,
     nombre: "Pantallas completas",
     ruta: "/opcion3",
-    descripcion: "Índigo y verde, al estilo de las grandes petroleras: cada giro de la rueda salta a la pantalla siguiente.",
+    descripcion: "Azul petróleo y verde ESIM: cada giro de la rueda salta a la pantalla siguiente.",
     captura: "/img/izaje/izaje-03.webp",
   },
 ];

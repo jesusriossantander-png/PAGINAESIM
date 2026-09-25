@@ -48,13 +48,28 @@ export default function Pantallas({ children }: { children: React.ReactNode }) {
     // Si la pantalla actual es más alta que la ventana, primero se recorre normalmente
     const puedeSaltar = (dir: number) => {
       const r = secs[actual()].getBoundingClientRect();
-      return dir > 0 ? r.bottom <= innerHeight + 4 : r.top >= -4;
+      // Tolerancia: si sobran menos de 80 px, igual salta (evita quedar "trabado" por unos píxeles)
+      return dir > 0 ? r.bottom <= innerHeight + 80 : r.top >= -80;
+    };
+
+    // Con un visor o panel abierto (data-modal en <html>) no se salta de pantalla
+    const hayModal = () => !!document.documentElement.dataset.modal;
+
+    // Si la rueda está sobre un bloque con scroll propio (ej. la ficha de una base) que todavía puede moverse, se respeta
+    const bloqueConScroll = (el: EventTarget | null, dir: number) => {
+      for (let n = el as HTMLElement | null; n && n !== cont; n = n.parentElement) {
+        const oy = getComputedStyle(n).overflowY;
+        if ((oy === "auto" || oy === "scroll") && n.scrollHeight > n.clientHeight + 1) {
+          if (dir > 0 ? n.scrollTop + n.clientHeight < n.scrollHeight - 1 : n.scrollTop > 0) return true;
+        }
+      }
+      return false;
     };
 
     const onWheel = (e: WheelEvent) => {
-      if (!mq.matches || e.ctrlKey) return;
+      if (!mq.matches || e.ctrlKey || hayModal()) return;
       const dir = Math.sign(e.deltaY);
-      if (!dir || !puedeSaltar(dir)) return;
+      if (!dir || bloqueConScroll(e.target, dir) || !puedeSaltar(dir)) return;
       e.preventDefault();
       if (bloqueado) return;
       acumulado += e.deltaY;
@@ -64,7 +79,7 @@ export default function Pantallas({ children }: { children: React.ReactNode }) {
       }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (!mq.matches) return;
+      if (!mq.matches || hayModal()) return;
       const t = e.target as HTMLElement;
       if (t.closest("input, textarea, select, [contenteditable]")) return;
       const abajo = ["ArrowDown", "PageDown", " "].includes(e.key) && !e.shiftKey;
@@ -79,13 +94,13 @@ export default function Pantallas({ children }: { children: React.ReactNode }) {
     };
     const onTouchStart = (e: TouchEvent) => (touchY = e.touches[0].clientY);
     const onTouchMove = (e: TouchEvent) => {
-      if (!mq.matches || touchY === null) return;
+      if (!mq.matches || touchY === null || hayModal()) return;
       const dy = touchY - e.touches[0].clientY;
       const dir = Math.sign(dy);
       if (dir && puedeSaltar(dir)) e.preventDefault();
     };
     const onTouchEnd = (e: TouchEvent) => {
-      if (!mq.matches || touchY === null) return;
+      if (!mq.matches || touchY === null || hayModal()) return;
       const dy = touchY - e.changedTouches[0].clientY;
       touchY = null;
       if (Math.abs(dy) > 50 && puedeSaltar(Math.sign(dy)) && !bloqueado) ir(actual() + Math.sign(dy));
@@ -127,7 +142,7 @@ export default function Pantallas({ children }: { children: React.ReactNode }) {
             {nombres.map((n, i) => (
               <li key={n}>
                 <button onClick={() => irRef.current(i)} aria-label={`Ir a ${n}`} aria-current={i === idx} className="group flex items-center gap-3">
-                  <span className="pointer-events-none rounded bg-indi-950/85 px-2.5 py-1 text-xs font-bold whitespace-nowrap text-white opacity-0 transition group-hover:opacity-100">
+                  <span className="pointer-events-none rounded bg-petro-950/85 px-2.5 py-1 text-xs font-bold whitespace-nowrap text-white opacity-0 transition group-hover:opacity-100">
                     {n}
                   </span>
                   <span

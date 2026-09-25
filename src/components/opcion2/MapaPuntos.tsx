@@ -150,7 +150,7 @@ export default function MapaPuntos() {
   );
 }
 
-function Ficha({ base: b }: { base: Base }) {
+export function Ficha({ base: b, compacta = false }: { base: Base; compacta?: boolean }) {
   const datos = [
     ["Dirección", b.direccion],
     ["Teléfono", b.telefono],
@@ -164,19 +164,19 @@ function Ficha({ base: b }: { base: Base }) {
 
   return (
     <article className="animate-fade-up mt-4 border border-neutral-200 bg-white">
-      {b.foto && (
+      {b.foto && !compacta && (
         <div className="relative aspect-[16/7] overflow-hidden">
           <Image src={b.foto} alt={`Base ${b.ciudad}`} fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <p className="absolute bottom-4 left-5 text-xs font-extrabold tracking-wider text-white uppercase">{b.cuenca}</p>
         </div>
       )}
-      <div className="p-6 md:p-7">
+      <div className={compacta ? "p-5" : "p-6 md:p-7"}>
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="text-2xl font-extrabold">{b.ciudad}</h3>
           <span className="text-sm font-bold text-neutral-500">
             {b.provincia}
-            {!b.foto && ` · ${b.cuenca}`}
+            {(!b.foto || compacta) && ` · ${b.cuenca}`}
           </span>
         </div>
 
