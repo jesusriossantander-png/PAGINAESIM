@@ -5,12 +5,12 @@ import Logo from "@/components/Logo";
 import { site } from "@/data/site";
 
 const links = [
-  ["#inicio", "Inicio"],
-  ["#servicios", "Servicios"],
-  ["#nosotros", "Nosotros"],
-  ["#proyectos", "Proyectos"],
-  ["#bases", "Bases"],
-  ["#contacto", "Contacto"],
+  ["/opcion3#inicio", "Inicio"],
+  ["/opcion3#servicios", "Servicios"],
+  ["/opcion3#nosotros", "Nosotros"],
+  ["/opcion3#proyectos", "Proyectos"],
+  ["/opcion3#bases", "Bases"],
+  ["/opcion3#contacto", "Contacto"],
 ];
 
 export default function Header3() {
@@ -26,7 +26,7 @@ export default function Header3() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${scroll || open ? "bg-petro-950/90 backdrop-blur-md" : "bg-transparent"}`}>
       <div className="mx-auto flex h-20 max-w-[82rem] items-center justify-between gap-6 px-6 xl:px-12">
-        <a href="#inicio" aria-label="ESIM – Inicio">
+        <a href="/opcion3#inicio" aria-label="ESIM – Inicio">
           <Logo className="h-11 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]" />
         </a>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Principal">
@@ -40,7 +40,17 @@ export default function Header3() {
           <a href={site.phoneHref} className="hidden text-sm font-bold text-white/80 hover:text-white xl:block">
             {site.phone}
           </a>
-          <a href="#contacto" className="hidden rounded-md bg-acento-500 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-acento-400 sm:block">
+          <a
+            href="/opcion3/acceso"
+            className="hidden items-center gap-2 rounded-md px-3 py-2 text-sm font-bold text-white/80 transition hover:bg-white/10 hover:text-white md:flex"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <rect x="5" y="11" width="14" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            </svg>
+            Portal socios
+          </a>
+          <a href="/opcion3#contacto" className="hidden rounded-md bg-acento-500 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-acento-400 sm:block">
             Solicitar cotización
           </a>
           <button onClick={() => setOpen((v) => !v)} aria-label="Menú" aria-expanded={open} className="grid h-11 w-11 place-items-center rounded-md bg-white/10 text-white lg:hidden">
@@ -57,6 +67,9 @@ export default function Header3() {
               {l}
             </a>
           ))}
+          <a href="/opcion3/acceso" onClick={() => setOpen(false)} className="mt-4 block rounded-md border border-white/20 py-4 text-center font-bold text-white">
+            Portal socios / empleados
+          </a>
         </nav>
       )}
     </header>

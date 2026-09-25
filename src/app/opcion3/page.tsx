@@ -26,7 +26,7 @@ function Titulo({ eyebrow, children, claro = false }: { eyebrow: string; childre
 const canales = [
   { t: "Solicitud de cotización", d: "Contanos el equipo o servicio y te enviamos una propuesta técnica.", href: "#contacto", icono: "cotizar" },
   { t: "Trabajá con nosotros", d: "Envianos tu CV: ajustadores, torneros, soldadores, técnicos.", href: `mailto:${site.email}?subject=${encodeURIComponent("Postulación laboral")}`, icono: "ajuste" },
-  { t: "Proveedores", d: "Sumate a nuestra red de proveedores y contratistas.", href: `mailto:${site.email}?subject=${encodeURIComponent("Proveedores")}`, icono: "repuestos" },
+  { t: "Portal socios", d: "Documentación interna e indicadores para empleados y socios.", href: "/opcion3/acceso", icono: "repuestos" },
   { t: "WhatsApp directo", d: `Hablá con ${site.manager.split(" ")[0]} por WhatsApp.`, href: `https://wa.me/${site.whatsapp}`, icono: "izaje" },
 ];
 
@@ -239,6 +239,9 @@ export default function Opcion3() {
             <div className="flex gap-5">
               <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 WhatsApp
+              </a>
+              <a href="/opcion3/acceso" className="hover:text-white">
+                Portal socios
               </a>
               <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 LinkedIn
