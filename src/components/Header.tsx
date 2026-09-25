@@ -34,12 +34,12 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          solid ? "bg-white/90 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-xl" : "bg-transparent"
+          solid ? "bg-night-950/85 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl" : "bg-transparent"
         }`}
       >
         <div className={`container-x flex items-center justify-between transition-all duration-500 ${solid ? "h-[68px]" : "h-[88px]"}`}>
           <Link href="/" aria-label="ESIM – Inicio" className="relative z-10">
-            <Logo className={`h-9 w-auto transition sm:h-10 ${solid ? "" : "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"}`} />
+            <Logo className="h-10 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:h-12" />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Principal">
@@ -50,7 +50,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   className={`group relative px-4 py-2 text-[15px] font-semibold transition-colors ${
-                    solid ? (active ? "text-brand-500" : "text-ink hover:text-brand-500") : "text-white/85 hover:text-white"
+                    active ? "text-white" : "text-white/75 hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -68,7 +68,7 @@ export default function Header() {
             <Link
               href="/acceso"
               className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
-                solid ? "text-ink hover:bg-paper" : "text-white hover:bg-white/10"
+                "text-white hover:bg-white/10"
               }`}
             >
               <LockIcon />
@@ -88,7 +88,7 @@ export default function Header() {
           <button
             type="button"
             className={`relative z-10 grid h-11 w-11 place-items-center rounded-full lg:hidden ${
-              solid ? "bg-paper text-ink" : "bg-white/10 text-white backdrop-blur"
+              "bg-white/10 text-white backdrop-blur"
             }`}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}

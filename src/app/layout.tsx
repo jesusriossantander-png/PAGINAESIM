@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Asistente from "@/components/Asistente";
+import ScrollLogo from "@/components/ScrollLogo";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <Asistente />
+        <ScrollLogo />
       </body>
     </html>
   );

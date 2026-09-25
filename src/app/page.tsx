@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroSlideshow from "@/components/HeroSlideshow";
-import Marquee from "@/components/Marquee";
+import BasesMap from "@/components/BasesMap";
 import ProjectsCarousel, { type Proyecto } from "@/components/ProjectsCarousel";
 import Reveal from "@/components/Reveal";
 import ServicesExplorer from "@/components/ServicesExplorer";
@@ -94,13 +94,6 @@ export default function Home() {
             </Reveal>
           </div>
         </div>
-      </section>
-
-      {/* MARQUEE */}
-      <section className="border-y border-white/10 bg-brand-600 py-7 text-white">
-        <Marquee
-          items={["Acondicionamiento de ductos", "Bombas y compresores", "Motores a gas", "Izaje con hidrogrúa", "Repuestos a medida", "Modelado 3D"]}
-        />
       </section>
 
       {/* SERVICIOS */}
@@ -202,6 +195,23 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* BASES */}
+      <section id="bases" className="grain relative overflow-hidden bg-night-950 py-24 text-white md:py-36">
+        <div className="container-x">
+          <Reveal className="mb-14 max-w-3xl">
+            <p className="eyebrow text-brand-300">Presencia en Argentina</p>
+            <h2 className="mt-5 text-4xl leading-[1.05] font-semibold md:text-6xl">
+              Cerca de cada operación, <em className="!text-brand-300">en cuatro ciudades.</em>
+            </h2>
+            <p className="mt-6 text-lg text-white/65">
+              Bases en Mendoza, Malargüe, Neuquén y Villa Mercedes para llegar rápido a los yacimientos y plantas de Cuyo
+              y la Cuenca Neuquina. Tocá una base para ver el detalle.
+            </p>
+          </Reveal>
+          <BasesMap />
         </div>
       </section>
 
