@@ -13,7 +13,7 @@ export const disenos: Diseno[] = [
     id: 2,
     nombre: "Corporativa clara",
     ruta: "/opcion2",
-    descripcion: "Clara y en bloques, al estilo de las grandes empresas de energía, con el rojo del logo como acento.",
+    descripcion: "Clara y en bloques, al estilo de las grandes empresas de energía, con el verde del logo como acento.",
     captura: "/img/ajuste/bomba-b8-ypf-poliducto-07.webp",
   },
 ];

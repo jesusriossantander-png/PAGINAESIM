@@ -20,11 +20,17 @@
   --color-brand-100: #dcefe5;
   --color-brand-50: #eef6f1;
 
-  /* Rojo del logo, uso puntual (acento principal en la Opción 2) */
+  /* Rojo del logo, uso puntual */
   --color-signal-500: #e5202e;
-  --color-rojo-500: #e30613;
-  --color-rojo-600: #c10510;
-  --color-rojo-50: #fdecee;
+
+  /* Verde del ícono del logo: acento de la Opción 2 */
+  --color-acento-700: #04502a;
+  --color-acento-600: #066536;
+  --color-acento-500: #0a7a42;
+  --color-acento-400: #1f9a5a;
+  --color-acento-300: #6cc596;
+  --color-acento-100: #d7efe1;
+  --color-acento-50: #edf7f1;
 
   /* Neutros cálidos */
   --color-paper: #f4f5f1;

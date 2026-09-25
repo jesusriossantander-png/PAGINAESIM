@@ -18,11 +18,12 @@ export default function Footer2() {
         </div>
         <Col titulo="Empresa">
           {[
-            ["#nosotros", "Nosotros"],
-            ["#servicios", "Servicios"],
-            ["#proyectos", "Proyectos"],
-            ["/trabaja-con-nosotros", "Trabajá con nosotros"],
-            ["/acceso", "Portal socios"],
+            ["/opcion2/empresa", "Nosotros"],
+            ["/opcion2/servicios", "Servicios"],
+            ["/opcion2/obras", "Proyectos"],
+            ["/opcion2/contacto", "Contacto"],
+            ["/opcion2/trabaja-con-nosotros", "Trabajá con nosotros"],
+            ["/opcion2/acceso", "Portal socios"],
           ].map(([h, l]) => (
             <li key={h}>
               <Link href={h} className="hover:text-white">
@@ -33,12 +34,16 @@ export default function Footer2() {
         </Col>
         <Col titulo="Servicios">
           {servicios.map((s) => (
-            <li key={s.slug}>{s.title}</li>
+            <li key={s.slug}>
+              <Link href={`/opcion2/servicios#${s.slug}`} className="hover:text-white">
+                {s.title}
+              </Link>
+            </li>
           ))}
         </Col>
         <Col titulo="Contacto">
           <li>
-            <a href={site.phoneHref} className="text-base font-bold text-white hover:text-rojo-500">
+            <a href={site.phoneHref} className="text-base font-bold text-white hover:text-acento-500">
               {site.phone}
             </a>
           </li>
@@ -50,7 +55,7 @@ export default function Footer2() {
           <li className="pt-2 text-xs tracking-wider text-white/40 uppercase">Bases</li>
           {bases.map((b) => (
             <li key={b.id}>
-              <span className="text-rojo-500">■</span> {b.ciudad}, {b.provincia}
+              <span className="text-acento-500">■</span> {b.ciudad}, {b.provincia}
             </li>
           ))}
         </Col>

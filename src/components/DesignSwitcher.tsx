@@ -46,7 +46,7 @@ export default function DesignSwitcher() {
               href={d.ruta}
               title={`Opción ${d.id}: ${d.nombre}`}
               className={`grid h-8 min-w-8 place-items-center rounded-full px-2 transition ${
-                d.id === actual ? "bg-[#e30613] text-white" : "hover:bg-neutral-100"
+                d.id === actual ? "bg-neutral-900 text-white" : "hover:bg-neutral-100"
               }`}
             >
               {d.id}
