@@ -24,11 +24,13 @@ La web tiene varias propuestas de diseño en el mismo proyecto:
 | Opción | Dirección | Carpeta |
 | --- | --- | --- |
 | 1 · Noche industrial | `/` (y `/servicios`, `/obras`, …) | `src/app/(opcion1)/` |
-| 2 · Corporativa clara | `/opcion2` | `src/app/opcion2/` (+ `src/components/opcion2/`) |
+| 2 · Corporativa clara | `/opcion2` (y sus páginas internas) | `src/app/opcion2/` (+ `src/components/opcion2/`) |
+| 3 · Pantallas completas | `/opcion3` | `src/app/opcion3/` (+ `src/components/opcion3/`) |
 
 - `/disenos` muestra todas las opciones. El lanzador abre esa página.
 - En cualquier página, el **panel de diseños** (pestaña al costado izquierdo) permite pasar de una opción a otra. Para ocultarlo al publicar: `NEXT_PUBLIC_MOSTRAR_DISENOS=0`.
-- **Para agregar la Opción 3:** crear `src/app/opcion3/` (con su `layout.tsx` y `page.tsx`) y sumar una línea en `src/data/disenos.ts`.
+- **Opción 3 · navegación por pantallas:** en computadoras (desde 1024 px de ancho y 620 px de alto), cada giro de la rueda, flecha, RePág/AvPág o deslizamiento salta a la pantalla siguiente. Los puntos de la derecha llevan a cada pantalla. En el celular se desplaza normalmente. Lo maneja `src/components/opcion3/Pantallas.tsx`; cada pantalla es una `<section data-pantalla="Nombre">`.
+- **Para agregar la Opción 4:** crear `src/app/opcion4/` (con su `layout.tsx` y `page.tsx`) y sumar una línea en `src/data/disenos.ts`.
 
 ## Correr en local (desarrollo)
 
@@ -57,6 +59,7 @@ Las fotos originales están en `ESIM. COMPARTIDO/` y `TERCEROS (CLIENTES VARIOS)
 
 | Qué | Archivo |
 | --- | --- |
+| Datos de cada base (dirección, teléfono, responsable, personal, servicios, equipos, foto) | `src/data/bases.ts` |
 | Teléfono, email, dirección, WhatsApp, gerente, cifras, clientes | `src/data/site.ts` |
 | Asistente virtual "Andrea" (respuestas y pasos) | `src/components/Asistente.tsx` |
 | Servicios (textos, viñetas, foto) | `src/data/servicios.ts` |

@@ -16,6 +16,13 @@ export const disenos: Diseno[] = [
     descripcion: "Clara y en bloques, al estilo de las grandes empresas de energía, con el verde del logo como acento.",
     captura: "/img/ajuste/bomba-b8-ypf-poliducto-07.webp",
   },
+  {
+    id: 3,
+    nombre: "Pantallas completas",
+    ruta: "/opcion3",
+    descripcion: "Índigo y verde, al estilo de las grandes petroleras: cada giro de la rueda salta a la pantalla siguiente.",
+    captura: "/img/izaje/izaje-03.webp",
+  },
 ];
 
 // Devuelve la opción a la que pertenece una ruta (las que no empiezan con /opcionN son de la Opción 1)

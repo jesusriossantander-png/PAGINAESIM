@@ -23,6 +23,15 @@
   /* Rojo del logo, uso puntual */
   --color-signal-500: #e5202e;
 
+  /* Índigo: color principal de la Opción 3 */
+  --color-indi-950: #0e0b3a;
+  --color-indi-900: #17125a;
+  --color-indi-800: #221a86;
+  --color-indi-700: #2f25b0;
+  --color-indi-600: #3c30d0;
+  --color-indi-100: #e6e4fb;
+  --color-indi-50: #f3f2fd;
+
   /* Verde del ícono del logo: acento de la Opción 2 */
   --color-acento-700: #04502a;
   --color-acento-600: #066536;
