@@ -17,10 +17,11 @@ export default function MapaBases3() {
   const s = sel ? ZOOM : 1;
   const tx = sel ? W / 2 - sel.x * s : 0;
   const ty = sel ? H * 0.45 - sel.y * s : 0;
-  const ficha = bases[activa ?? hover ?? 0];
+  // La ficha cambia solo con clic (el hover resalta en el mapa); así las pestañas no se mueven bajo el mouse
+  const ficha = bases[activa ?? 0];
 
   return (
-    <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+    <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
       <div className="relative mx-auto w-full max-w-[25rem]">
         <svg viewBox={`0 0 ${W} ${H}`} className="h-auto max-h-[62svh] w-full overflow-hidden rounded-2xl bg-petro-50" role="img" aria-label="Mapa de Argentina con las bases de ESIM">
           <g style={{ transform: `translate(${tx}px, ${ty}px) scale(${s})`, transition: "transform 1s cubic-bezier(0.65, 0, 0.35, 1)" }}>
@@ -100,12 +101,12 @@ export default function MapaBases3() {
             <button
               key={b.id}
               role="tab"
-              aria-selected={activa === i}
-              onClick={() => setActiva(activa === i ? null : i)}
+              aria-selected={(activa ?? 0) === i}
+              onClick={() => setActiva(i)}
               onMouseEnter={() => setHover(i)}
               onMouseLeave={() => setHover(null)}
               className={`rounded-md px-3 py-3 text-left text-sm font-extrabold transition ${
-                activa === i ? "bg-petro-800 text-white" : "bg-petro-50 text-petro-800 hover:bg-petro-100"
+                (activa ?? 0) === i ? "bg-petro-800 text-white" : "bg-petro-50 text-petro-800 hover:bg-petro-100"
               }`}
             >
               {b.ciudad}
