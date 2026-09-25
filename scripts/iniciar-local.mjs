@@ -2,7 +2,7 @@
 // Uso: node scripts/iniciar-local.mjs [--port N] [--build] [--no-open]
 //      (o doble clic en "Iniciar Web ESIM.bat" en Windows)
 import { spawn, spawnSync } from "node:child_process";
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import http from "node:http";
 import net from "node:net";
 import os from "node:os";
@@ -122,6 +122,16 @@ function abrirNavegador(url) {
   }
 }
 
+// Opciones de diseño (se leen de src/data/disenos.ts como texto)
+function opciones() {
+  try {
+    const txt = readFileSync(path.join(ROOT, "src", "data", "disenos.ts"), "utf8");
+    return [...txt.matchAll(/id:\s*(\d+),\s*nombre:\s*"([^"]+)",\s*ruta:\s*"([^"]+)"/g)].map((m) => ({ id: m[1], nombre: m[2], ruta: m[3] }));
+  } catch {
+    return [];
+  }
+}
+
 // ---------- Principal ----------
 if (!existsSync(NEXT)) {
   console.log("Instalando dependencias (solo la primera vez)...");
@@ -145,9 +155,15 @@ server.on("exit", (code) => process.exit(code ?? 0));
 if (await esperarRespuesta(local)) {
   const lines = ["ESIM - Sitio web (vista local)", "", `PC:      ${local}`];
   if (ip) lines.push(`Oficina: http://${ip}:${port}`);
+  const ops = opciones();
+  if (ops.length) {
+    lines.push("", "Diseños:");
+    for (const o of ops) lines.push(`  Opción ${o.id} (${o.nombre}): ${local}${o.ruta === "/" ? "" : o.ruta}`);
+    lines.push(`  Ver todas: ${local}/disenos`);
+  }
   lines.push("", "Para detenerla: cerrá esta ventana o Ctrl+C");
   console.log("\n" + cuadro(lines) + "\n");
-  if (!flag("--no-open")) abrirNavegador(local);
+  if (!flag("--no-open")) abrirNavegador(`${local}/disenos`);
 } else {
   console.error("La web no respondió a tiempo; revisá los mensajes de arriba.");
 }

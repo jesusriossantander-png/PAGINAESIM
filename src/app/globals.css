@@ -20,8 +20,11 @@
   --color-brand-100: #dcefe5;
   --color-brand-50: #eef6f1;
 
-  /* Rojo del logo, uso puntual */
+  /* Rojo del logo, uso puntual (acento principal en la Opción 2) */
   --color-signal-500: #e5202e;
+  --color-rojo-500: #e30613;
+  --color-rojo-600: #c10510;
+  --color-rojo-50: #fdecee;
 
   /* Neutros cálidos */
   --color-paper: #f4f5f1;
@@ -257,4 +260,13 @@ h2 em {
   .mapa-pulso {
     animation: none;
   }
+}
+
+/* Opción 2: títulos en Manrope extra bold */
+.op2 h1,
+.op2 h2,
+.op2 h3,
+.op2 h4 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.025em;
 }

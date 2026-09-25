@@ -17,6 +17,19 @@ La primera vez instala las dependencias y prepara la web, lo que tarda un par de
 
 Opciones: `Iniciar Web ESIM.bat --port 3200` pide un puerto puntual (si está ocupado, busca otro), `--build` fuerza a regenerar la web y `--no-open` no abre el navegador. Si cambió algo del código (por ejemplo, después de un `git pull`), la web se regenera sola.
 
+## Diseños (opciones para comparar)
+
+La web tiene varias propuestas de diseño en el mismo proyecto:
+
+| Opción | Dirección | Carpeta |
+| --- | --- | --- |
+| 1 · Noche industrial | `/` (y `/servicios`, `/obras`, …) | `src/app/(opcion1)/` |
+| 2 · Corporativa clara | `/opcion2` | `src/app/opcion2/` (+ `src/components/opcion2/`) |
+
+- `/disenos` muestra todas las opciones. El lanzador abre esa página.
+- En cualquier página, el **panel de diseños** (pestaña al costado izquierdo) permite pasar de una opción a otra. Para ocultarlo al publicar: `NEXT_PUBLIC_MOSTRAR_DISENOS=0`.
+- **Para agregar la Opción 3:** crear `src/app/opcion3/` (con su `layout.tsx` y `page.tsx`) y sumar una línea en `src/data/disenos.ts`.
+
 ## Correr en local (desarrollo)
 
 Requisitos: Node.js 20 o superior.
