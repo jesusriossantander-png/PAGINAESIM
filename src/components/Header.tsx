@@ -37,7 +37,7 @@ export default function Header() {
           solid ? "bg-night-950/85 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl" : "bg-transparent"
         }`}
       >
-        <div className={`container-x flex items-center justify-between transition-all duration-500 ${solid ? "h-[68px]" : "h-[88px]"}`}>
+        <div className={`container-x flex items-center justify-between transition-all duration-500 ${solid ? "h-[4.25rem]" : "h-[5.5rem]"}`}>
           <Link href="/" aria-label="ESIM – Inicio" className="relative z-10">
             <Logo className="h-10 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:h-12" />
           </Link>
@@ -49,7 +49,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`group relative px-4 py-2 text-[15px] font-semibold transition-colors ${
+                  className={`group relative px-4 py-2 text-[0.9375rem] font-semibold transition-colors ${
                     active ? "text-white" : "text-white/75 hover:text-white"
                   }`}
                 >

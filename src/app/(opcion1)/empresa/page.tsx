@@ -51,14 +51,14 @@ export default function EmpresaPage() {
             </p>
           </Reveal>
           <Reveal delay={120}>
-            <div className="reveal-img relative aspect-[4/5] overflow-hidden rounded-[28px]">
+            <div className="reveal-img relative aspect-[4/5] overflow-hidden rounded-[1.75rem]">
               <Image src="/img/ajuste/motor-cooper-superior-yac-malargue-11.webp" alt="Técnico ajustando un motor" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             </div>
           </Reveal>
         </div>
 
         <div className="container-x mt-24">
-          <div className="grid gap-px overflow-hidden rounded-[28px] bg-line md:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-[1.75rem] bg-line md:grid-cols-4">
           {hitos.map((h, i) => (
             <Reveal key={h.year} delay={i * 100} className="h-full bg-paper p-8">
               <p className="font-display text-4xl font-semibold text-brand-500">{h.year}</p>
@@ -82,14 +82,14 @@ export default function EmpresaPage() {
 
       <section className="py-24 md:py-36">
         <div className="container-x grid gap-6 md:grid-cols-2">
-          <Reveal className="h-full rounded-[28px] bg-paper p-10 md:p-14">
+          <Reveal className="h-full rounded-[1.75rem] bg-paper p-10 md:p-14">
             <p className="eyebrow text-brand-500">Misión</p>
             <p className="mt-8 font-display text-2xl leading-snug font-medium md:text-3xl">
               Brindar servicios industriales confiables, seguros y a tiempo, que mantengan en marcha las operaciones de
               nuestros clientes.
             </p>
           </Reveal>
-          <Reveal delay={100} className="h-full rounded-[28px] bg-brand-500 p-10 text-white md:p-14">
+          <Reveal delay={100} className="h-full rounded-[1.75rem] bg-brand-500 p-10 text-white md:p-14">
             <p className="eyebrow text-white/80">Visión</p>
             <p className="mt-8 font-display text-2xl leading-snug font-medium md:text-3xl">
               Ser la empresa de referencia en mantenimiento y fabricación para la industria energética de Cuyo y
@@ -118,7 +118,7 @@ export default function EmpresaPage() {
       </section>
 
       <section className="px-3 pb-3 sm:px-5 sm:pb-5">
-        <div className="grain relative overflow-hidden rounded-[32px] bg-night-900 text-white">
+        <div className="grain relative overflow-hidden rounded-[2rem] bg-night-900 text-white">
           <Image src="/img/ductos/ductos-02.webp" alt="" fill sizes="100vw" className="object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-r from-night-950 to-transparent" />
           <div className="container-x relative py-24 md:py-32">

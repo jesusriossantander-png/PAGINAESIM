@@ -33,7 +33,7 @@ export default function ProjectsCarousel({ items }: { items: Proyecto[] }) {
           <Link
             key={p.src}
             href="/obras"
-            className="group relative aspect-[3/4] w-[78vw] shrink-0 snap-start overflow-hidden rounded-[24px] bg-night-900 sm:w-[46vw] lg:w-[30vw] xl:w-[25rem]"
+            className="group relative aspect-[3/4] w-[78vw] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-night-900 sm:w-[46vw] lg:w-[30vw] xl:w-[25rem]"
           >
             <Image src={p.src} alt={p.title} fill sizes="(min-width:1024px) 30vw, 78vw" className="object-cover transition duration-[1200ms] group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-night-950/95 via-night-950/10 to-transparent" />

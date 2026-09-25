@@ -93,7 +93,7 @@ export default function Opcion2() {
               Conocé más
             </Link>
           </Reveal>
-          <Reveal delay={120} className="relative min-h-[420px] overflow-hidden">
+          <Reveal delay={120} className="relative min-h-[26.25rem] overflow-hidden">
             <Image src="/img/ajuste/motor-cooper-superior-yac-malargue-14.webp" alt="Técnico en el taller de ESIM" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             <Link href="/opcion2/obras" aria-label="Ver trabajos" className="absolute top-6 right-6 grid h-16 w-16 place-items-center bg-acento-500 text-2xl text-white transition hover:bg-acento-600">
               ↗
@@ -206,13 +206,13 @@ export default function Opcion2() {
       <section className="bg-neutral-100 py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
           <Reveal className="grid grid-cols-2 gap-4">
-            <div className="relative row-span-2 min-h-[440px]">
+            <div className="relative row-span-2 min-h-[27.5rem]">
               <Image src="/img/ductos/ductos-12.webp" alt="Soldadura de ducto" fill sizes="25vw" className="object-cover" />
             </div>
-            <div className="relative min-h-[210px]">
+            <div className="relative min-h-[13.125rem]">
               <Image src="/img/repuestos/repuestos-06.webp" alt="Repuestos de bronce" fill sizes="25vw" className="object-cover" />
             </div>
-            <div className="relative min-h-[210px]">
+            <div className="relative min-h-[13.125rem]">
               <Image src="/img/izaje/izaje-05.webp" alt="Grúas en obra" fill sizes="25vw" className="object-cover" />
             </div>
           </Reveal>

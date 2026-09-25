@@ -48,7 +48,7 @@ export default function ScrollLogo() {
       onClick={subir}
       title={lleno ? "Llegaste al final · clic para volver al inicio" : `Recorrido: ${Math.round(pct)} % · clic para volver al inicio`}
       aria-label={lleno ? "Llegaste al final de la página. Volver al inicio" : `Recorrido de la página: ${Math.round(pct)} %. Volver al inicio`}
-      className={`progreso fixed bottom-4 left-4 z-[55] h-16 w-16 rounded-full bg-white p-2 shadow-[0_4px_16px_rgba(11,11,11,0.22)] transition-[box-shadow,transform] duration-500 hover:scale-105 sm:h-[68px] sm:w-[68px] ${
+      className={`progreso fixed bottom-4 left-4 z-[55] h-16 w-16 rounded-full bg-white p-2 shadow-[0_4px_16px_rgba(11,11,11,0.22)] transition-[box-shadow,transform] duration-500 hover:scale-105 sm:h-[4.25rem] sm:w-[4.25rem] ${
         lleno ? "lleno" : ""
       }`}
     >

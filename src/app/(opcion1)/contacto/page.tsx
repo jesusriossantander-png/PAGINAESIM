@@ -58,7 +58,7 @@ export default function ContactoPage() {
               Atención comercial: {site.manager}, gerencia. {site.address}, {site.city}.
             </p>
           </Reveal>
-          <Reveal delay={120} className="rounded-[28px] bg-paper p-6 sm:p-10 md:p-12">
+          <Reveal delay={120} className="rounded-[1.75rem] bg-paper p-6 sm:p-10 md:p-12">
             <h2 className="text-3xl font-semibold">Solicitá una cotización</h2>
             <p className="mt-2 mb-8 text-muted">Completá el formulario y te contactamos a la brevedad.</p>
             <ContactForm to={site.email} subjectPrefix="Consulta web" />
@@ -67,7 +67,7 @@ export default function ContactoPage() {
       </section>
 
       <section className="px-3 pb-3 sm:px-5 sm:pb-5">
-        <div className="h-[460px] overflow-hidden rounded-[32px] bg-paper">
+        <div className="h-[28.75rem] overflow-hidden rounded-[2rem] bg-paper">
           <iframe title="Ubicación de ESIM" src={mapSrc} className="h-full w-full border-0 grayscale-[40%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
       </section>

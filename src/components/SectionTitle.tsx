@@ -16,7 +16,7 @@ export default function SectionTitle({
     <div className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className="text-xs font-bold tracking-[0.2em] text-brand-500 uppercase">{eyebrow}</p>}
       <h2
-        className={`mt-3 text-3xl font-bold md:text-[42px] md:leading-tight ${
+        className={`mt-3 text-3xl font-bold md:text-[2.625rem] md:leading-tight ${
           light ? "text-white [&_em]:text-accent-400" : "text-ink-800"
         }`}
       >

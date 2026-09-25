@@ -48,7 +48,7 @@ export default function Servicios3() {
               <ul className="mt-6 space-y-2.5">
                 {s.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-3 font-bold text-petro-950">
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-acento-500 text-[10px] text-white">✓</span>
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-acento-500 text-[0.625rem] text-white">✓</span>
                     {b}
                   </li>
                 ))}

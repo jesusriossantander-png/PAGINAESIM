@@ -21,9 +21,9 @@ export default function BasesMap() {
   return (
     <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
       {/* MAPA */}
-      <div className="relative mx-auto w-full max-w-[560px]">
+      <div className="relative mx-auto w-full max-w-[35rem]">
         <div className="absolute inset-0 -z-10 rounded-full bg-brand-500/15 blur-3xl" />
-        <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full overflow-hidden rounded-[28px]" role="img" aria-label="Mapa de Argentina con las bases de ESIM">
+        <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full overflow-hidden rounded-[1.75rem]" role="img" aria-label="Mapa de Argentina con las bases de ESIM">
           <defs>
             <radialGradient id="mar" cx="30%" cy="35%" r="80%">
               <stop offset="0" stopColor="#12211b" />

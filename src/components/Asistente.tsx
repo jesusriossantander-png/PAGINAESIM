@@ -160,7 +160,7 @@ export default function Asistente() {
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
                 <p
-                  className={`max-w-[85%] px-3.5 py-2.5 text-[13px] leading-relaxed ${
+                  className={`max-w-[85%] px-3.5 py-2.5 text-[0.8125rem] leading-relaxed ${
                     m.from === "user"
                       ? "rounded-2xl rounded-br-sm bg-brand-500 text-white"
                       : "rounded-2xl rounded-bl-sm bg-paper text-ink"

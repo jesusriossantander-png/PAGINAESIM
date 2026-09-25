@@ -42,7 +42,7 @@ export default function Empresa2() {
               Contactanos
             </Link>
           </Reveal>
-          <Reveal delay={120} className="relative min-h-[440px]">
+          <Reveal delay={120} className="relative min-h-[27.5rem]">
             <Image src="/img/ajuste/motor-cooper-superior-yac-malargue-11.webp" alt="Técnico ajustando un motor" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
           </Reveal>
         </div>

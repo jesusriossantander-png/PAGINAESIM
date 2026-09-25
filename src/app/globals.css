@@ -91,6 +91,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Todas las opciones se ven como con el navegador al 90 % de zoom:
+     textos, espacios y componentes (en rem) se achican al 90 %;
+     las secciones de pantalla completa (vh/svh) siguen ocupando toda la ventana. */
+  font-size: 90%;
 }
 
 body {

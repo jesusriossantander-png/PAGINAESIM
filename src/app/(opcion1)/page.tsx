@@ -76,17 +76,17 @@ export default function Home() {
       <section className="pb-24 md:pb-36">
         <div className="container-x grid gap-5 md:grid-cols-12">
           <Reveal className="md:col-span-7">
-            <div className="reveal-img relative aspect-[4/3] overflow-hidden rounded-[28px]">
+            <div className="reveal-img relative aspect-[4/3] overflow-hidden rounded-[1.75rem]">
               <Image src="/img/ductos/ductos-11.webp" alt="Soldador trabajando en un ducto" fill sizes="(min-width:768px) 58vw, 100vw" className="object-cover" />
             </div>
           </Reveal>
           <div className="grid gap-5 md:col-span-5">
             <Reveal delay={120}>
-              <div className="reveal-img relative aspect-[16/10] overflow-hidden rounded-[28px]">
+              <div className="reveal-img relative aspect-[16/10] overflow-hidden rounded-[1.75rem]">
                 <Image src="/img/repuestos/repuestos-06.webp" alt="Bujes de bronce mecanizados" fill sizes="(min-width:768px) 40vw, 100vw" className="object-cover" />
               </div>
             </Reveal>
-            <Reveal delay={220} className="flex flex-col justify-between rounded-[28px] bg-brand-500 p-8 text-white">
+            <Reveal delay={220} className="flex flex-col justify-between rounded-[1.75rem] bg-brand-500 p-8 text-white">
               <p className="font-display text-6xl font-semibold">24/7</p>
               <p className="mt-6 text-lg text-white/85">
                 Respuesta ante paradas de planta. Cuando tu operación se detiene, nuestro equipo sale.
@@ -126,7 +126,7 @@ export default function Home() {
               Un proceso probado, <em>de principio a fin.</em>
             </h2>
           </Reveal>
-          <div className="mt-16 grid gap-px overflow-hidden rounded-[28px] bg-line md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-px overflow-hidden rounded-[1.75rem] bg-line md:grid-cols-2 lg:grid-cols-4">
             {proceso.map((p, i) => (
               <Reveal key={p.t} delay={i * 100} className="group h-full bg-white p-8 transition hover:bg-night-900 md:p-10">
                 <div className="flex h-full flex-col">
@@ -161,7 +161,7 @@ export default function Home() {
       {/* HSE */}
       <section className="grain relative overflow-hidden bg-night-950 text-white">
         <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[420px]">
+          <div className="relative min-h-[26.25rem]">
             <Image src="/img/ductos/ductos-08.webp" alt="Trabajo en zanja con elementos de protección" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-night-950/80 lg:to-night-950" />
           </div>
@@ -224,12 +224,12 @@ export default function Home() {
               Empresas que <em>confían en nosotros.</em>
             </h2>
           </Reveal>
-          <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-[28px] bg-line md:grid-cols-4">
+          <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-[1.75rem] bg-line md:grid-cols-4">
             {clients.map((c, i) => (
               <Reveal key={c.name} delay={i * 80} className="flex h-40 flex-col items-center justify-center gap-3 bg-paper px-6 md:h-48">
                 {c.logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={c.logo} alt={c.name} className="h-10 w-auto max-w-[160px] md:h-12" />
+                  <img src={c.logo} alt={c.name} className="h-10 w-auto max-w-[10rem] md:h-12" />
                 ) : (
                   <span className="text-center font-display text-2xl font-semibold text-ink">{c.name}</span>
                 )}
@@ -242,7 +242,7 @@ export default function Home() {
 
       {/* CTA FINAL */}
       <section className="px-3 pb-3 sm:px-5 sm:pb-5">
-        <div className="grain relative overflow-hidden rounded-[32px] bg-night-900 text-white">
+        <div className="grain relative overflow-hidden rounded-[2rem] bg-night-900 text-white">
           <Image src="/img/izaje/izaje-02.webp" alt="" fill sizes="100vw" className="object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/60 to-transparent" />
           <div className="container-x relative grid gap-10 py-24 md:py-32 lg:grid-cols-[1.4fr_1fr] lg:items-end">

@@ -45,7 +45,7 @@ export default function TrabajaPage() {
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={120} className="rounded-[28px] bg-paper p-6 sm:p-10 md:p-12">
+          <Reveal delay={120} className="rounded-[1.75rem] bg-paper p-6 sm:p-10 md:p-12">
             <h2 className="mb-2 text-3xl font-semibold">Envianos tus datos</h2>
             <p className="mb-8 text-muted">Adjuntá tu CV al correo que se abrirá al enviar.</p>
             <ContactForm to={site.email} subjectPrefix="Postulación laboral" />

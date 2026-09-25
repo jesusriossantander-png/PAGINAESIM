@@ -67,7 +67,7 @@ export default function Header2() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`relative py-2 text-[13px] font-extrabold tracking-wider uppercase transition ${activo ? "text-white" : "text-white/70 hover:text-white"}`}
+                className={`relative py-2 text-[0.8125rem] font-extrabold tracking-wider uppercase transition ${activo ? "text-white" : "text-white/70 hover:text-white"}`}
               >
                 {l.label}
                 {activo && <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-acento-300" />}

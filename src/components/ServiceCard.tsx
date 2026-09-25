@@ -19,7 +19,7 @@ export default function ServiceCard({ s }: { s: Servicio }) {
       </div>
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-bold text-ink-800">{s.title}</h3>
-        <p className="mt-2 flex-1 text-[15px] leading-relaxed text-steel-500">{s.short}</p>
+        <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-steel-500">{s.short}</p>
         <span className="mt-4 text-sm font-bold text-brand-500">Ver más →</span>
       </div>
     </Link>

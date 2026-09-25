@@ -37,7 +37,7 @@ export default function DesignSwitcher() {
     <div className="fixed top-1/2 left-0 z-[70] -translate-y-1/2">
       {abierto ? (
         <div className="flex flex-col items-center gap-1 rounded-r-2xl border border-l-0 border-black/10 bg-white/95 p-1.5 text-xs font-bold text-neutral-800 shadow-xl backdrop-blur">
-          <Link href="/disenos" className="px-1 pt-1 text-[9px] tracking-wider text-neutral-500 uppercase hover:text-neutral-900">
+          <Link href="/disenos" className="px-1 pt-1 text-[0.5625rem] tracking-wider text-neutral-500 uppercase hover:text-neutral-900">
             Diseño
           </Link>
           {disenos.map((d) => (

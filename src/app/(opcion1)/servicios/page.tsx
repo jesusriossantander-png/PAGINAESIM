@@ -53,7 +53,7 @@ export default function ServiciosPage() {
                 </div>
               </Reveal>
               <Reveal delay={100}>
-                <div className="reveal-img relative mt-10 aspect-[16/9] overflow-hidden rounded-[28px]">
+                <div className="reveal-img relative mt-10 aspect-[16/9] overflow-hidden rounded-[1.75rem]">
                   <Image src={s.image} alt={s.title} fill sizes="(min-width:1024px) 70vw, 100vw" className="object-cover" />
                 </div>
               </Reveal>

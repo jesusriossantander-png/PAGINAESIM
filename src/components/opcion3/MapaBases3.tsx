@@ -21,7 +21,7 @@ export default function MapaBases3() {
 
   return (
     <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-      <div className="relative mx-auto w-full max-w-[400px]">
+      <div className="relative mx-auto w-full max-w-[25rem]">
         <svg viewBox={`0 0 ${W} ${H}`} className="h-auto max-h-[62svh] w-full overflow-hidden rounded-2xl bg-petro-50" role="img" aria-label="Mapa de Argentina con las bases de ESIM">
           <g style={{ transform: `translate(${tx}px, ${ty}px) scale(${s})`, transition: "transform 1s cubic-bezier(0.65, 0, 0.35, 1)" }}>
             <path d={mapa.vecinos} fill="#ffffff" stroke="#1a4d6b" strokeOpacity={0.12} strokeWidth={1} vectorEffect="non-scaling-stroke" />

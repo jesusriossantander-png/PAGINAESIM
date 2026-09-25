@@ -49,7 +49,7 @@ export default function Contacto2() {
           </Reveal>
         </div>
       </section>
-      <section className="h-[440px] bg-neutral-200">
+      <section className="h-[27.5rem] bg-neutral-200">
         <iframe title="Ubicación de ESIM" src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`} className="h-full w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
       </section>
     </>

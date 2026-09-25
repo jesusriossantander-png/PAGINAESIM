@@ -24,7 +24,7 @@ export default function HeroSlideshow() {
   }, [i, paused]);
 
   return (
-    <section className="grain relative h-[100svh] min-h-[640px] overflow-hidden bg-night-950 text-white">
+    <section className="grain relative h-[100svh] min-h-[40rem] overflow-hidden bg-night-950 text-white">
       {slides.map((s, k) => (
         <div
           key={s.src}
@@ -96,7 +96,7 @@ export default function HeroSlideshow() {
                   }}
                 />
               </span>
-              <span className={`mt-3 block text-[11px] font-bold tracking-[0.18em] uppercase ${k === i ? "text-brand-300" : "text-white/45"}`}>
+              <span className={`mt-3 block text-[0.6875rem] font-bold tracking-[0.18em] uppercase ${k === i ? "text-brand-300" : "text-white/45"}`}>
                 0{k + 1} · {s.tag}
               </span>
               <span className={`mt-1 block text-sm font-semibold transition ${k === i ? "text-white" : "text-white/55 group-hover:text-white/80"}`}>

@@ -46,7 +46,7 @@ export default function MapaPuntos() {
   return (
     <div ref={ref} className="grid items-start gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
       {/* MAPA */}
-      <div className="relative mx-auto w-full max-w-[440px]">
+      <div className="relative mx-auto w-full max-w-[27.5rem]">
         <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full select-none" role="img" aria-label="Mapa de Argentina con las bases de ESIM">
           {puntos.puntos.map(([x, y], i) => {
             const d = Math.hypot(x - foco.x, y - foco.y);

@@ -58,7 +58,7 @@ export default function ServicesExplorer() {
 
       <div className="relative hidden lg:block">
         <div className="sticky top-28">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[28px]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem]">
             {servicios.map((item, i) => (
               <Image
                 key={item.slug}

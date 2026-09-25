@@ -37,7 +37,7 @@ export default function AccesoPage() {
             ))}
           </ul>
         </div>
-        <div className="animate-fade-up rounded-[28px] border border-white/10 bg-white/[0.06] p-8 backdrop-blur-xl md:p-10" style={{ animationDelay: "150ms" }}>
+        <div className="animate-fade-up rounded-[1.75rem] border border-white/10 bg-white/[0.06] p-8 backdrop-blur-xl md:p-10" style={{ animationDelay: "150ms" }}>
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold">Iniciar sesión</h2>
             <span className="rounded-full bg-brand-500/20 px-3 py-1 text-xs font-bold text-brand-300">Próximamente</span>

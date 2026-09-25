@@ -61,7 +61,7 @@ export default function Proyectos3() {
           >
             <Image src={p.src} alt={p.titulo} fill sizes="(min-width:1024px) 22vw, 50vw" className="object-cover transition duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-petro-950 via-petro-950/30 to-transparent" />
-            <span className="absolute top-4 left-4 rounded bg-white/15 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur">{p.tag}</span>
+            <span className="absolute top-4 left-4 rounded bg-white/15 px-2.5 py-1 text-[0.6875rem] font-bold text-white backdrop-blur">{p.tag}</span>
             <span className="absolute top-4 right-4 grid h-9 w-9 place-items-center rounded-md bg-acento-500 text-white opacity-0 transition group-hover:opacity-100">⤢</span>
             <span className="absolute inset-x-4 bottom-4">
               <span className="block text-base leading-snug font-bold text-white md:text-lg">{p.titulo}</span>
