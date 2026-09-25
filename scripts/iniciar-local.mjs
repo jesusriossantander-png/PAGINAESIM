@@ -57,8 +57,10 @@ async function elegirPuerto() {
 }
 
 // ---------- Dependencias y build ----------
-function correr(cmd, cmdArgs) {
-  const r = spawnSync(cmd, cmdArgs, { cwd: ROOT, stdio: "inherit", shell: IS_WIN });
+// La consola de Windows solo hace falta para "npm" (npm.cmd). Para node se lanza directo:
+// con la consola, una ruta con espacios como "F:\Program Files\nodejs\node.exe" se corta en el espacio.
+function correr(cmd, cmdArgs, { shell = false } = {}) {
+  const r = spawnSync(cmd, cmdArgs, { cwd: ROOT, stdio: "inherit", shell });
   if (r.status !== 0) {
     console.error(`\nFalló: ${cmd} ${cmdArgs.join(" ")}`);
     process.exit(r.status ?? 1);
@@ -123,7 +125,7 @@ function abrirNavegador(url) {
 // ---------- Principal ----------
 if (!existsSync(NEXT)) {
   console.log("Instalando dependencias (solo la primera vez)...");
-  correr("npm", ["install"]);
+  correr("npm", ["install"], { shell: IS_WIN });
 }
 if (necesitaBuild()) {
   console.log("Preparando la web (build)...");
