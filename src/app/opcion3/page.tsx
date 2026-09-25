@@ -54,10 +54,12 @@ export default function Opcion3() {
             </div>
           </div>
           <div className="hidden justify-end lg:flex">
-            <div className="rounded-3xl bg-white/90 px-10 py-9 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-grande.png" alt="ESIM S.R.L." className="w-[26rem] max-w-full xl:w-[30rem]" />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo-grande.png"
+              alt="ESIM S.R.L."
+              className="w-[28rem] max-w-full drop-shadow-[0_0.25rem_1.5rem_rgba(0,0,0,0.75)] xl:w-[32rem]"
+            />
           </div>
         </div>
         <div className="relative ml-auto w-full max-w-4xl rounded-tl-2xl bg-petro-700 py-6 pr-28 pl-8">
