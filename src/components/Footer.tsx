@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container-x relative pt-20 md:pt-28">
         <div className="grid gap-12 border-b border-white/10 pb-16 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo light className="h-11 w-auto" />
+            <Logo className="h-11 w-auto" />
             <p className="mt-6 max-w-xs leading-relaxed">
               Servicios industriales para Oil &amp; Gas: ductos, equipos rotativos, hidrogrúa y oficina técnica. Cuyo y
               Patagonia, desde {site.foundedYear}.
@@ -68,13 +68,11 @@ export default function Footer() {
           </FooterCol>
         </div>
 
-        {/* Marca gigante */}
-        <p
-          aria-hidden="true"
-          className="pointer-events-none -mb-[0.2em] pt-10 text-center font-display text-[24vw] leading-none font-semibold tracking-tighter text-white/[0.04] select-none"
-        >
-          ESIM
-        </p>
+        {/* Logo gigante de fondo */}
+        <div aria-hidden="true" className="pointer-events-none flex justify-center pt-14 pb-10 select-none">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-grande.png" alt="" className="w-[80vw] max-w-5xl opacity-[0.07]" />
+        </div>
       </div>
       <div className="relative border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs sm:flex-row">

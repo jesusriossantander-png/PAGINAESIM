@@ -39,7 +39,7 @@ export default function Header() {
       >
         <div className={`container-x flex items-center justify-between transition-all duration-500 ${solid ? "h-[68px]" : "h-[88px]"}`}>
           <Link href="/" aria-label="ESIM – Inicio" className="relative z-10">
-            <Logo light={!solid} className="h-9 w-auto sm:h-10" />
+            <Logo className={`h-9 w-auto transition sm:h-10 ${solid ? "" : "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"}`} />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Principal">
